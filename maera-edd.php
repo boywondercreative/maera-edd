@@ -29,3 +29,14 @@ function maera_edd_templates_path( $file_paths ) {
 
 }
 add_filter( 'edd_template_paths', 'maera_edd_templates_path' );
+
+/**
+ * Add the /views folder for our custom twigs
+ */
+function maera_edd_twigs_location( $locations ) {
+
+	$locations[] = dirname( __FILE__ ) . '/views';
+	return $locations;
+
+}
+add_filter( 'maera/timber/locations', 'maera_edd_twigs_location', 1 );
