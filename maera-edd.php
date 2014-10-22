@@ -25,10 +25,13 @@ if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
 function maera_edd_templates_path( $file_paths ) {
 
 	$file_paths[50] = dirname( __FILE__ ) . '/templates';
+	ksort( $file_paths, SORT_NUMERIC );
+
 	return $file_paths;
 
 }
 add_filter( 'edd_template_paths', 'maera_edd_templates_path' );
+
 
 /**
  * Add the /views folder for our custom twigs
