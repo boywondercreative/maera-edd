@@ -89,3 +89,8 @@ function maera_get_edd_price( $download_id = 0 ) {
 	return $price;
 
 }
+
+function maera_edd_remove_default_styles() {
+	wp_dequeue_style( 'edd-styles' );
+}
+add_action( 'wp_enqueue_scripts', 'maera_edd_remove_default_styles' );
