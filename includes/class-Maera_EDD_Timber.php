@@ -1,8 +1,8 @@
 <?php
 
 /**
-* Timber customizations for Maera_EDD
-*/
+ * Timber customizations for Maera_EDD
+ */
 class Maera_EDD_Timber {
 
 	function __construct() {
