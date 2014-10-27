@@ -18,6 +18,10 @@ if ( ! defined( 'MAERA_EDD_PATH' ) ) {
 	define( 'MAERA_EDD_PATH', dirname( __FILE__ ) );
 }
 
+if ( ! defined( 'MAERA_EDD_URL' ) ) {
+	define( 'MAERA_EDD_URL', plugin_dir_url( __FILE__ ) );
+}
+
 // Load our Maera_EDD class if EDD is installed
 if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 

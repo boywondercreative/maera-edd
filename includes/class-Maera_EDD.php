@@ -24,11 +24,9 @@ class Maera_EDD {
 		$this->requires();
 		$maera_edd_timber = new Maera_EDD_Timber();
 
-
-		add_action( 'wp_enqueue_scripts',         array( $this, 'remove_default_edd_styles' ) );
-
-		add_action( 'edd_purchase_link_top',      array( $this, 'purchase_variable_pricing' ), 10, 1 );
-		remove_action( 'edd_purchase_link_top',  'edd_purchase_variable_pricing', 10, 1 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
+		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
+		remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
 
 	}
 
@@ -42,11 +40,16 @@ class Maera_EDD {
 	}
 
 	/**
-	 * Remove the default EDD styles
+	 * Add our custom stylesheet
 	 */
-	function remove_default_edd_styles() {
+	function styles() {
 
+		// Remove the default EDD styles
 		wp_dequeue_style( 'edd-styles' );
+
+		// Add our custom styles
+		wp_register_style( 'maera-edd', trailingslashit( MAERA_EDD_URL ) . 'assets/css/style.css' );
+		wp_enqueue_style( 'maera-edd' );
 
 	}
 
