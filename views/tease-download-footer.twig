@@ -3,7 +3,7 @@
 		<span itemprop="priceCurrency" content="{{ function( 'edd_get_currency' ) }}"></span>
 		{{ shell.clearfix }}
 		<div class="{{ shell.float_class('left') }}">
-			<span itemprop="price" content="{{ function( 'maera_get_edd_price', post.ID ) }}">
+			<span itemprop="price" content="{{ function( 'edd_get_download_price', post.ID ) }}">
 					{% if post._variable_pricing %}
 						{{ function( 'edd_price_range', post.ID ) }}
 				{% else %}

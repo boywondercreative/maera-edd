@@ -14,107 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Early exit if EDD is not installed.
-if ( ! class_exists( 'Easy_Digital_Downloads' ) ) {
-	return;
+if ( ! defined( 'MAERA_EDD_PATH' ) ) {
+	define( 'MAERA_EDD_PATH', dirname( __FILE__ ) );
 }
 
-/**
- * Add the /templates folder for our custom templates
- */
-function maera_edd_templates_path( $file_paths ) {
+// Load our Maera_EDD class if EDD is installed
+if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 
-	$file_paths[50] = dirname( __FILE__ ) . '/templates';
-	ksort( $file_paths, SORT_NUMERIC );
-
-	return $file_paths;
-
-}
-add_filter( 'edd_template_paths', 'maera_edd_templates_path' );
-
-
-/**
- * Add the /views folder for our custom twigs
- */
-function maera_edd_twigs_location( $locations ) {
-
-	$locations[] = dirname( __FILE__ ) . '/views';
-	return $locations;
-
-}
-add_filter( 'maera/timber/locations', 'maera_edd_twigs_location', 1 );
-
-/**
- * Displays a formatted price for a download
- *
- * @since 1.0
- * @param int $download_id ID of the download price to show
- * @param bool $echo Whether to echo or return the results
- * @return void
- */
-function maera_get_edd_price( $download_id = 0 ) {
-
-	if( empty( $download_id ) ) {
-		$download_id = get_the_ID();
-	}
-
-	if ( edd_has_variable_prices( $download_id ) ) {
-
-		$prices = edd_get_variable_prices( $download_id );
-
-		// Return the lowest price
-		$i = 0;
-		foreach ( $prices as $key => $value ) {
-
-			if( $i < 1 ) {
-				$price = $value['amount'];
-			}
-
-			if ( (float) $value['amount'] < (float) $price ) {
-
-				$price = (float) $value['amount'];
-
-			}
-			$i++;
-		}
-
-		$price = edd_sanitize_amount( $price );
-
-	} else {
-
-		$price = edd_get_download_price( $download_id );
-
-	}
-
-	return $price;
+	require_once( __DIR__ . '/includes/class-Maera_EDD.php');
 
 }
 
-function maera_edd_get_echo( $function ) {
-
-	ob_start();
-	$function();
-	$get_echo = ob_get_clean();
-	return $get_echo;
-
-}
-
-function maera_edd_remove_default_styles() {
-	wp_dequeue_style( 'edd-styles' );
-}
-add_action( 'wp_enqueue_scripts', 'maera_edd_remove_default_styles' );
-
-function maera_edd_get_button_class() {
-
-	$context = Timber::get_context();
-	Timber::render( array( 'edd-button-classes.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
-
-}
-
-function maera_edd_add_button_class( $defaults ) {
-
-	$defaults['class'] =  maera_edd_get_echo( 'maera_edd_get_button_class' );
-	return $defaults;
-
-}
-add_filter( 'edd_purchase_link_defaults', 'maera_edd_add_button_class' );
+Maera_EDD::get_instance();
