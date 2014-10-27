@@ -1,12 +1,18 @@
 <footer class="entry-footer">
 	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-	<span itemprop="priceCurrency" content="{{ function( 'edd_get_currency' ) }}"></span>
-	<span itemprop="price" content="{{ function( 'maera_get_edd_price', post.ID ) }}">
-			{% if post._variable_pricing %}
-				{{ function( 'edd_price_range', post.ID ) }}
-		{% else %}
-			{{ function( 'edd_price', post.ID ) }}
-		{% endif %}
-	</span>
-  </div>
+		<span itemprop="priceCurrency" content="{{ function( 'edd_get_currency' ) }}"></span>
+		{{ shell.clearfix }}
+		<div class="{{ shell.float_class('left') }}">
+			<span itemprop="price" content="{{ function( 'maera_get_edd_price', post.ID ) }}">
+					{% if post._variable_pricing %}
+						{{ function( 'edd_price_range', post.ID ) }}
+				{% else %}
+					{{ function( 'edd_price', post.ID ) }}
+				{% endif %}
+			</span>
+		</div>
+		<div class="{{ shell.float_class('right') }}">
+			{{ function( 'edd_get_purchase_link' ) }}
+		</div>
+	</div>
 </footer>

@@ -90,6 +90,15 @@ function maera_get_edd_price( $download_id = 0 ) {
 
 }
 
+function maera_edd_get_echo( $function ) {
+
+	ob_start();
+	$function();
+	$get_echo = ob_get_clean();
+	return $get_echo;
+
+}
+
 function maera_edd_remove_default_styles() {
 	wp_dequeue_style( 'edd-styles' );
 }
@@ -98,13 +107,13 @@ add_action( 'wp_enqueue_scripts', 'maera_edd_remove_default_styles' );
 function maera_edd_get_button_class() {
 
 	$context = Timber::get_context();
-	return Timber::render( array( 'edd-button-classes.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+	Timber::render( array( 'edd-button-classes.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
 
 }
 
 function maera_edd_add_button_class( $defaults ) {
 
-	$defaults['class'] =  maera_edd_get_button_class();
+	$defaults['class'] =  maera_edd_get_echo( 'maera_edd_get_button_class' );
 	return $defaults;
 
 }
