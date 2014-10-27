@@ -45,7 +45,7 @@ class Maera_EDD {
 	function styles() {
 
 		// Remove the default EDD styles
-		wp_dequeue_style( 'edd-styles' );
+		// wp_dequeue_style( 'edd-styles' );
 
 		// Add our custom styles
 		wp_register_style( 'maera-edd', trailingslashit( MAERA_EDD_URL ) . 'assets/css/style.css' );
