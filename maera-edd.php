@@ -94,3 +94,18 @@ function maera_edd_remove_default_styles() {
 	wp_dequeue_style( 'edd-styles' );
 }
 add_action( 'wp_enqueue_scripts', 'maera_edd_remove_default_styles' );
+
+function maera_edd_get_button_class() {
+
+	$context = Timber::get_context();
+	return Timber::render( array( 'edd-button-classes.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+
+}
+
+function maera_edd_add_button_class( $defaults ) {
+
+	$defaults['class'] =  maera_edd_get_button_class();
+	return $defaults;
+
+}
+add_filter( 'edd_purchase_link_defaults', 'maera_edd_add_button_class' );
