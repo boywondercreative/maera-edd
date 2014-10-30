@@ -24,6 +24,7 @@ class Maera_EDD {
 		$this->requires();
 		$maera_edd_timber     = new Maera_EDD_Timber();
 		$maera_edd_customizer = new Maera_EDD_Customizer();
+		$maera_edd_shortcodes = new Maera_EDD_Shortcodes();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ), 100 );
 		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
@@ -40,6 +41,7 @@ class Maera_EDD {
 		require_once( __DIR__ . '/class-Maera_EDD_Timber.php');
 		require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
 		require_once( __DIR__ . '/widgets.php');
+		require_once( __DIR__ . '/class-Maera_EDD_Shortcodes.php');
 
 	}
 
