@@ -1,3 +1,7 @@
 table#edd_checkout_cart {
 	width: 100%;
 }
+
+.sidebar-buy-button .button {
+	width: 100%;
+}

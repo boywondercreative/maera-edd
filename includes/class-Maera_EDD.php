@@ -39,6 +39,7 @@ class Maera_EDD {
 
 		require_once( __DIR__ . '/class-Maera_EDD_Timber.php');
 		require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
+		require_once( __DIR__ . '/widgets.php');
 
 	}
 
