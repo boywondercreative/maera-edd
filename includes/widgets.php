@@ -9,10 +9,11 @@ class Maera_EDD_Buy_Button extends WP_Widget {
 
     /** @see WP_Widget::widget */
     function widget( $args, $instance ) { ?>
-        <div class="sidebar-buy-button">
-            <?php echo edd_get_purchase_link(); ?>
-        </div>
-        <?php
+        <?php if ( is_singular( 'download' ) ) : ?>
+            <div class="sidebar-buy-button">
+                <?php echo edd_get_purchase_link(); ?>
+            </div>
+        <?php endif;
     }
 }
 
