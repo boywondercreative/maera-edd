@@ -60,10 +60,10 @@ class Maera_EDD_Customizer {
 				'default' => 1,
 				'primary' => 2,
 				'success' => 3,
-				'info'    => 3,
-				'warning' => 4,
-				'danger'  => 5,
-				'link'    => 6,
+				'info'    => 4,
+				'warning' => 5,
+				'danger'  => 6,
+				'link'    => 7,
 			),
 
 		);
