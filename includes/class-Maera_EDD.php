@@ -25,7 +25,7 @@ class Maera_EDD {
 		$maera_edd_timber     = new Maera_EDD_Timber();
 		$maera_edd_customizer = new Maera_EDD_Customizer();
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ), 100 );
 		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
 		remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
@@ -50,6 +50,12 @@ class Maera_EDD {
 
 		// Remove the default EDD styles
 		// wp_dequeue_style( 'edd-styles' );
+
+		// If EDD-Software-Specs is installed, remove its styles
+		if ( class_exists( 'EDD_Software_Specs' ) ) {
+			wp_dequeue_style( 'edd-software-specs' );
+			wp_deregister_style( 'edd-software-specs' );
+		}
 
 		// Add our custom styles
 		wp_register_style( 'maera-edd', trailingslashit( MAERA_EDD_URL ) . 'assets/css/style.css' );

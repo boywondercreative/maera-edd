@@ -5,3 +5,31 @@ table#edd_checkout_cart {
 .sidebar-buy-button .button {
 	width: 100%;
 }
+
+table#isa-edd-specs {
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#isa-edd-specs caption {
+	background: rgba(0,0,0,0.1);
+	font-size: 2em;
+}
+
+#isa-edd-specs tr {
+	border-bottom: 1px solid #f2f2f2;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+#isa-edd-specs tr td {
+	padding: .5em;
+}
+
+#isa-edd-specs tr td:first-child {
+	font-weight: 700;
+}
+
+#isa-edd-specs tr td:nth-child(2) {
+	text-align: right;
+}
