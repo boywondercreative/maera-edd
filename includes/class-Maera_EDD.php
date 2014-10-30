@@ -23,7 +23,7 @@ class Maera_EDD {
 
 		$this->requires();
 		$maera_edd_timber     = new Maera_EDD_Timber();
-		// $maera_edd_customizer = new Maera_EDD_Customizer();
+		$maera_edd_customizer = new Maera_EDD_Customizer();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
@@ -38,7 +38,7 @@ class Maera_EDD {
 	function requires() {
 
 		require_once( __DIR__ . '/class-Maera_EDD_Timber.php');
-		// require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
+		require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
 
 	}
 
@@ -103,13 +103,10 @@ class Maera_EDD {
 	 */
 	function add_button_class( $defaults ) {
 
-		if ( is_singular( 'download' ) ) {
-			// On singular downloads use extra-large buttons
-			$defaults['class'] =  '[maera_button_primary_extra_large]';
-		} else {
-			// If this is not a singular download, use medium buttons
-			$defaults['class'] =  '[maera_button_primary_medium]';
-		}
+		$button_size  = get_theme_mod( 'edd_button_size', 'large' );
+		$button_color = get_theme_mod( 'edd_button_color', 'primary' );
+
+		$defaults['class'] =  '[maera_button_' . $button_color . '_' . $button_size . ']';
 		return $defaults;
 
 	}
