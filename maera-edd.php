@@ -26,7 +26,6 @@ if ( ! defined( 'MAERA_EDD_URL' ) ) {
 if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 
 	require_once( __DIR__ . '/includes/class-Maera_EDD.php');
+	Maera_EDD::get_instance();
 
 }
-
-Maera_EDD::get_instance();

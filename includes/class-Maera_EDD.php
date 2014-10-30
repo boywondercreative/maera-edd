@@ -28,6 +28,7 @@ class Maera_EDD {
 		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
 		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
 		remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
+		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
 
 	}
 
@@ -94,6 +95,13 @@ class Maera_EDD {
 
 		echo '</div><!--end .edd_price_options-->';
 		do_action( 'edd_after_price_options', $download_id );
+
+	}
+
+	function add_button_class( $defaults ) {
+
+		$defaults['class'] =  '[maera_button_primary_large]';
+		return $defaults;
 
 	}
 
