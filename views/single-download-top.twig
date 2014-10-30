@@ -1,0 +1,26 @@
+[maera_grid_row_open]
+    {% if post.thumbnail %}
+        <div class="[maera_grid_col_6]">
+            <img class="download-featured-image" src="{{ post.thumbnail.src }}"{# srcset="{{ post.thumbnail.src | retina(1) }} 1x, {{ post.thumbnail.src | retina(2) }}  2x" #}>
+        </div>
+    {% endif %}
+
+    {% if post.thumbnail %}
+        <div class="[maera_grid_col_6]">
+    {% else %}
+        <div class="[maera_grid_col_12]">
+    {% endif %}
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <span itemprop="priceCurrency" content="{{ function( 'edd_get_currency' ) }}"></span>
+            {{ shell.clearfix }}
+            <h2 itemprop="price" content="{{ function( 'edd_get_download_price', post.ID ) }}">
+                    {% if post._variable_pricing %}
+                        {{ function( 'edd_price_range', post.ID ) }}
+                {% else %}
+                    {{ function( 'edd_price', post.ID ) }}
+                {% endif %}
+            </h2>
+            {{ function( 'edd_get_purchase_link' ) }}
+        </div>
+    </div>
+[maera_grid_row_close]

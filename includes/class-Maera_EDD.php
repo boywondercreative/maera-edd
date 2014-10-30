@@ -98,9 +98,18 @@ class Maera_EDD {
 
 	}
 
+	/**
+	 * Add the shell button classes to EDD buttons
+	 */
 	function add_button_class( $defaults ) {
 
-		$defaults['class'] =  '[maera_button_primary_large]';
+		if ( is_singular( 'download' ) ) {
+			// On singular downloads use extra-large buttons
+			$defaults['class'] =  '[maera_button_primary_extra_large]';
+		} else {
+			// If this is not a singular download, use medium buttons
+			$defaults['class'] =  '[maera_button_primary_medium]';
+		}
 		return $defaults;
 
 	}
