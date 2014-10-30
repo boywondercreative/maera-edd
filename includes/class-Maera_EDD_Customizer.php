@@ -68,6 +68,15 @@ class Maera_EDD_Customizer {
 
 		);
 
+		$controls[] = array(
+			'type'     => 'checkbox',
+			'setting'  => 'edd_variables_dropdown',
+			'label'    => __( 'Replace variables radio select with a dropdown', 'maera_edd' ),
+			'section'  => 'maera_edd',
+			'default'  => 0,
+			'priority' => 1,
+		);
+
 		return $controls;
 
 	}

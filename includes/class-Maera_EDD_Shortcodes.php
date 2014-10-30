@@ -13,6 +13,9 @@ class Maera_EDD_Shortcodes {
     */
     function modify_edd_download_shortcode( $display, $atts, $buy_button, $columns, $column_width, $downloads, $excerpt, $full_content, $price, $thumbnails, $query ) {
 
+        $button_defaults = apply_filters( 'edd_purchase_link_defaults', array() );
+        $button_defaults_class = $button_defaults['class'];
+
         if ( 1 == $columns ) {
             $column_class = '[maera_grid_col_12]';
         } else if ( 2 == $columns ) {
@@ -35,7 +38,7 @@ class Maera_EDD_Shortcodes {
 
                 while ( $downloads->have_posts() ) : $downloads->the_post(); $count++;
 
-                    $in_cart         = ( edd_item_in_cart( get_the_ID() ) && !edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
+                    $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
                     $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
 
                     ?>
@@ -81,7 +84,13 @@ class Maera_EDD_Shortcodes {
     				        */
                             if ( $buy_button == 'yes' ) : ?>
                                 <div class="edd_download_buy_button">
-                                    <?php echo edd_get_purchase_link( array( 'id' => get_the_ID(), 'price' => false ) ); ?>
+                                    <?php if ( ! edd_has_variable_prices( get_the_ID() ) ) : ?>
+                                        <?php echo edd_get_purchase_link( array( 'id' => get_the_ID(), 'price' => false ) ); ?>
+                                    <?php else : ?>
+                                        <a class="button <?php echo $button_defaults_class; ?>" href="<?php the_permalink(); ?>">
+                                            <span class="edd-add-to-cart-label"><?php _e( 'Select Option', 'maera_edd' ); ?></span>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
                             <?php endif; ?>
 

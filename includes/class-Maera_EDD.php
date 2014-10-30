@@ -27,9 +27,12 @@ class Maera_EDD {
 		$maera_edd_shortcodes = new Maera_EDD_Shortcodes();
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ), 100 );
-		add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
-		remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
+
+		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
+			remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
+			add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
+		}
 
 	}
 
