@@ -14,6 +14,3 @@ table#isa-edd-specs { width: 100%; margin-top: 1em; margin-bottom: 1em; }
 #isa-edd-specs tr td { padding: .5em; }
 #isa-edd-specs tr td:first-child { font-weight: 700; }
 #isa-edd-specs tr td:nth-child(2) { text-align: right; }
-
-/*Hack for the core framework*/
-.g [class*="u"].eddgc2, .g [class*="u"].eddgc3, .g [class*="u"].eddgc4, .g [class*="u"].eddgc5, .g [class*="u"].eddgc6 { margin-left: -.3em; }
