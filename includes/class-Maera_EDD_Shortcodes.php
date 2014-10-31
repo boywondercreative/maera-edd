@@ -47,6 +47,7 @@ class Maera_EDD_Shortcodes {
                     ?>
 
                     <article id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class ) ); ?>>
+                        <div class="inside">
 
     				 	<?php
     				 	/**
@@ -64,11 +65,12 @@ class Maera_EDD_Shortcodes {
                                     Timber::render( array( 'shortcode-download-image.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
                                     ?>
                                 </a>
+                            </div>
                         <?php endif; ?>
 
                         <div class="download-info">
                             <a title="<?php _e( 'View ','maera-edd') . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                <h2><?php the_title(); ?></h2>
+                                <h3><?php the_title(); ?></h3>
                             </a>
                             <?php edd_get_template_part( 'shortcode', 'content-price' ); ?>
 
@@ -100,7 +102,7 @@ class Maera_EDD_Shortcodes {
                                 </div>
                             <?php endif; ?>
 
-                        </div>
+                        </div></div>
                     </article>
 
                     <?php if ( $count == $columns ) : ?>

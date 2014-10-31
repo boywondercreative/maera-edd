@@ -33,3 +33,15 @@ table#isa-edd-specs {
 #isa-edd-specs tr td:nth-child(2) {
 	text-align: right;
 }
+
+.downloads-list .hentry {
+	margin-bottom: 1.5em;
+}
+
+.downloads-list .hentry .inside {
+	border: 1px solid rgba(0,0,0,.04);
+}
+
+.downloads-list .hentry .inside .download-info {
+	padding: 10px;
+}
