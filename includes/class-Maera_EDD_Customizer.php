@@ -32,24 +32,6 @@ class Maera_EDD_Customizer {
 
 		$controls[] = array(
 			'type'     => 'select',
-			'setting'  => 'edd_button_size',
-			'label'    => __( 'Button size', 'maera_edd' ),
-			'subtitle' => __( 'Select the button size for the purchase/buynow button', 'maera_edd' ),
-			'section'  => 'maera_edd',
-			'priority' => 10,
-			'default'  => 'large',
-			'choices'  => array(
-				'extra_small' => __( 'Extra Small', 'maera_edd' ),
-				'small'       => __( 'Small', 'maera_edd' ),
-				'medium'      => __( 'Medium', 'maera_edd' ),
-				'large'       => __( 'Large', 'maera_edd' ),
-				'extra_large' => __( 'Extra Large', 'maera_edd' )
-			),
-
-		);
-
-		$controls[] = array(
-			'type'     => 'select',
 			'setting'  => 'edd_button_color',
 			'label'    => __( 'Button color', 'maera_edd' ),
 			'subtitle' => __( 'Select the button color for the purchase/buynow button', 'maera_edd' ),

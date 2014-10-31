@@ -115,10 +115,15 @@ class Maera_EDD {
 	 */
 	function add_button_class( $defaults ) {
 
-		$button_size  = get_theme_mod( 'edd_button_size', 'large' );
-		$button_color = get_theme_mod( 'edd_button_color', 'primary' );
+		$color = get_theme_mod( 'edd_button_color', 'primary' );
 
-		$defaults['class'] =  '[maera_button_' . $button_color . '_' . $button_size . ']';
+		if ( ! is_singular( 'download' ) ) {
+			$size = 'extra_small';
+		} else {
+			$size = 'extra_large';
+		}
+
+		$defaults['class'] =  '[maera_button_' . $color . '_' . $size . ']';
 		return $defaults;
 
 	}

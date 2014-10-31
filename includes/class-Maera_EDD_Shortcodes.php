@@ -16,13 +16,16 @@ class Maera_EDD_Shortcodes {
         $button_defaults = apply_filters( 'edd_purchase_link_defaults', array() );
         $button_defaults_class = $button_defaults['class'];
 
+        // We can't divide the grid to 5 columns, so we're setting them to 4.
+        $columns = ( 5 == $columns ) ? 4 : $columns;
+
         if ( 1 == $columns ) {
             $column_class = '[maera_grid_col_12]';
         } else if ( 2 == $columns ) {
             $column_class = '[maera_grid_col_6]';
         } else if ( 3 == $columns ) {
             $column_class = '[maera_grid_col_4]';
-        } else if ( 4 == $columns || 5 == $columns ) {
+        } else if ( 4 == $columns ) {
             $column_class = '[maera_grid_col_3]';
         } else if ( 6 == $columns ) {
             $column_class = '[maera_grid_col_2]';
@@ -52,12 +55,15 @@ class Maera_EDD_Shortcodes {
     				 	if ( 'false' != $thumbnails ) : ?>
     				        <div class="download-image">
                                 <a title="<?php _e( 'View ', 'shop-front' ) . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                <?php if ( has_post_thumbnail() ) : ?>
-                                    <!-- TODO: FEATURED IMAGE -->
-                                <?php else : ?>
-                                    <!-- TODO: DEFAULT IMAGE -->
-                                <?php endif; ?>
-                            </a>
+                                    <?php
+                                    $context = Timber::get_context();
+                                    $context['post']   = new TimberPost( get_the_ID() );
+                                    $context['columns'] = $columns;
+                                    $context['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+
+                                    Timber::render( array( 'shortcode-download-image.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+                                    ?>
+                                </a>
                         <?php endif; ?>
 
                         <div class="download-info">
@@ -96,7 +102,12 @@ class Maera_EDD_Shortcodes {
 
                         </div>
                     </article>
-    			<?php endwhile; ?>
+
+                    <?php if ( $count == $columns ) : ?>
+                        <div class="clearfix"></div>
+                        <?php $count = 0; ?>
+                    <?php endif; ?>
+                <?php endwhile; ?>
 
     			<?php wp_reset_postdata(); ?>
             [maera_grid_container_close]
