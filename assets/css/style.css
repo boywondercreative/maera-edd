@@ -2,46 +2,18 @@ table#edd_checkout_cart {
 	width: 100%;
 }
 
-.sidebar-buy-button .button {
-	width: 100%;
-}
+.sidebar-buy-button .button { width: 100%; }
+.downloads-list .hentry { margin-bottom: 1.5em; }
+.downloads-list .hentry .inside { border: 1px solid rgba(0,0,0,.04); }
+.downloads-list .hentry .inside .download-info { padding: 10px; }
 
-table#isa-edd-specs {
-	width: 100%;
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
+/*EDD-Specks styles*/
+table#isa-edd-specs { width: 100%; margin-top: 1em; margin-bottom: 1em; }
+#isa-edd-specs caption { background: rgba(0,0,0,0.1); font-size: 2em; }
+#isa-edd-specs tr { border-bottom: 1px solid #f2f2f2; border-bottom: 1px solid rgba(0,0,0,.1); }
+#isa-edd-specs tr td { padding: .5em; }
+#isa-edd-specs tr td:first-child { font-weight: 700; }
+#isa-edd-specs tr td:nth-child(2) { text-align: right; }
 
-#isa-edd-specs caption {
-	background: rgba(0,0,0,0.1);
-	font-size: 2em;
-}
-
-#isa-edd-specs tr {
-	border-bottom: 1px solid #f2f2f2;
-	border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-#isa-edd-specs tr td {
-	padding: .5em;
-}
-
-#isa-edd-specs tr td:first-child {
-	font-weight: 700;
-}
-
-#isa-edd-specs tr td:nth-child(2) {
-	text-align: right;
-}
-
-.downloads-list .hentry {
-	margin-bottom: 1.5em;
-}
-
-.downloads-list .hentry .inside {
-	border: 1px solid rgba(0,0,0,.04);
-}
-
-.downloads-list .hentry .inside .download-info {
-	padding: 10px;
-}
+/*Hack for the core framework*/
+.g [class*="u"].eddgc2, .g [class*="u"].eddgc3, .g [class*="u"].eddgc4, .g [class*="u"].eddgc5, .g [class*="u"].eddgc6 { margin-left: -.3em; }

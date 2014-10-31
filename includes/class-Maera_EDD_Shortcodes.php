@@ -33,7 +33,9 @@ class Maera_EDD_Shortcodes {
 
         ob_start();
         $count = 0;
+        $rand = rand( 0, 999 );
         ?>
+        <style>.downloads-list .edd-grid-column-<?php echo $rand; ?>_1{clear:left;}</style>
 
         <div class="downloads-list">
             [maera_grid_row_open]
@@ -41,12 +43,14 @@ class Maera_EDD_Shortcodes {
 
                 while ( $downloads->have_posts() ) : $downloads->the_post(); $count++;
 
+                    $count_class = 1 < $columns ? 'edd-grid-column-' . $rand . '_' . $count : null;
+
                     $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
                     $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
 
                     ?>
 
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class ) ); ?>>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class, $count_class, 'eddgc' . $count ) ); ?>>
                         <div class="inside">
 
     				 	<?php
@@ -104,11 +108,6 @@ class Maera_EDD_Shortcodes {
 
                         </div></div>
                     </article>
-
-                    <?php if ( $count == $columns ) : ?>
-                        <div class="clearfix"></div>
-                        <?php $count = 0; ?>
-                    <?php endif; ?>
                 <?php endwhile; ?>
 
     			<?php wp_reset_postdata(); ?>
