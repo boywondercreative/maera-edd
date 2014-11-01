@@ -29,3 +29,6 @@ if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 	Maera_EDD::get_instance();
 
 }
+
+// Include the EDD-specific shell
+require_once( __DIR__ . '/shell/shell.php');

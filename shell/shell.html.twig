@@ -1,0 +1,28 @@
+{% macro open_container(element, id, extra_classes, properties) %}<{{ element|default('div') }} class="{{ 'container'|apply_filters( 'maera/container_class' ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>{% endmacro %}
+{% macro close_container(element) %}</{{ element|default('div') }}>{% endmacro %}
+{% macro open_row(element, id, extra_classes, properties) %}<{{ element|default('div') }} class="row{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>{% endmacro %}
+{% macro close_row(element) %}</{{ element|default('div') }}>{% endmacro %}
+{% macro open_col(element, sizes, id, extra_classes, properties) %}<{{ element|default('div') }} class="{{ _self.column_classes( sizes ) }}{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}{{ properties ? ' '~properties : '' }}>{% endmacro %}
+{% macro close_col(element) %}</{{ element|default('div') }}>{% endmacro %}
+{% macro column_classes(sizes) %}columns {% if sizes is iterable %}{% for size in sizes %}{% if size.mobile %} small-{{ size.mobile }}{% elseif size.tablet %} small-{{ size.tablet }} {% endif %}{% if size.medium %} medium-{{ size.medium }} {% endif %}{% if size.large %} large-{{ size.large }} {% endif %}{% endfor %}{% endif %}{% endmacro %}
+
+{% macro make_dropdown_button(color, size, type, extra, label, content) %}{%set randomid = random(999) %}<button href="#" data-dropdown="{{ randomid }}" aria-controls="{{ randomid }}" aria-expanded="false" class="{{ _self.button_classes(color, size, type) }} dropdown">{{ label }}</button><div id="{{ randomid }}" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">{{ content }}</div>{% endmacro %}
+{% macro button_classes(color, size, type, extra) %}{% if color == default %}{% set fcolor = '' %}{% endif %}{% if color == primary %}{% set fcolor = '' %}{% endif %}{% if color == info %}{% set fcolor = 'secondary' %}{% endif %}{% if color == warning %}{% set fcolor = 'alert' %}{% endif %}button {{ fcolor }} {% if size == 'extra-small' %}tiny{% endif %}{% if size == 'small' %}small{% endif %}{% if size == 'large' %}large{% endif %}{% if size == 'extra-large' %}large{% endif %} {{ type }} {{ extra }}{% endmacro %}
+{% macro button_group_classes(size, type, extra_classes) %}button-group{% endmacro %}
+
+{% macro alert(type, message, id, class, close) %}<div class="alert-box{{ type ? ' '~type : ' secondary' }} {{ class|default('') }}">{{ message|raw }}{% if close|default(false) %}<a href="#" class="close">&times;</a>{% endif %}</div>{% endmacro %}
+
+{% macro open_panel(extra_classes, id) %}<div class="panel{{ extra_classes ? ' '~extra_classes : '' }}"{{ id ? ' id="'~id~'"' : '' }}>{% endmacro %}
+{% macro close_panel() %}</div>{% endmacro %}
+{% macro open_panel_heading(extra_classes) %}<div class="panel-heading{{ extra_classes ? ' '~extra_classes : '' }}">{% endmacro %}
+{% macro close_panel_heading() %}</div>{% endmacro %}
+{% macro open_panel_body(extra_classes) %}<div class="panel-body{{ extra_classes ? ' '~extra_classes : '' }}">{% endmacro %}
+{% macro close_panel_body() %}</div>{% endmacro %}
+{% macro open_panel_footer(extra_classes) %}<div class="panel-footer{{ extra_classes ? ' '~extra_classes : '' }}">{% endmacro %}
+{% macro close_panel_footer() %}</div>{% endmacro %}
+
+{% macro clearfix() %}<div class="clearfix"></div>{% endmacro %}
+{% macro pagination_ul_class() %}pagination{% endmacro %}
+{% macro float_class(alignment) %}{{ alignment }}{% endmacro %}
+
+{% macro icon(symbol) %}<i class="el-icon-{{ symbol }}"></i>{% endmacro %}
