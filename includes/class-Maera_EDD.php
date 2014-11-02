@@ -26,7 +26,7 @@ class Maera_EDD {
 		$maera_edd_customizer = new Maera_EDD_Customizer();
 		$maera_edd_shortcodes = new Maera_EDD_Shortcodes();
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ), 100 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
 
 		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
@@ -51,7 +51,7 @@ class Maera_EDD {
 	/**
 	 * Add our custom stylesheet
 	 */
-	function styles() {
+	function scripts() {
 
 		$options = get_option( 'maera_admin_options', array() );
 		$active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
