@@ -116,8 +116,8 @@ class Maera_EDD_Shortcodes {
                 'type'      => 'list'
     		) );
     		?>
-            <script>jQuery( "ul.page-numbers" ).addClass( "pagination" );</script>
     	</nav>
+        <script>jQuery( "ul.page-numbers" ).addClass( "pagination" );</script>
         <?php
 
         $display = ob_get_clean();
