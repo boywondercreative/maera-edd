@@ -68,7 +68,7 @@ class Maera_EDD_Shortcodes {
 
                                 <figcaption>
                                     <a title="<?php _e( 'View ','maera-edd') . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                        <h3><?php the_title(); ?></h3>
+                                        <span class="title clearfix"><?php the_title(); ?></span>
                                     </a>
                                     <div class="details">
                                         <span class="price"><?php edd_get_template_part( 'shortcode', 'content-price' ); ?></span>
@@ -107,14 +107,16 @@ class Maera_EDD_Shortcodes {
     		<?php
     		$big = 999999;
     		echo paginate_links( array(
-    			'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-    			'format'  => '?paged=%#%',
-    			'current' => max( 1, $query['paged'] ),
-    			'total'   => $downloads->max_num_pages,
+    			'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+    			'format'    => '?paged=%#%',
+    			'current'   => max( 1, $query['paged'] ),
+    			'total'     => $downloads->max_num_pages,
     			'prev_next' => false,
-    			'show_all' => true,
+    			'show_all'  => true,
+                'type'      => 'list'
     		) );
     		?>
+            <script>jQuery( "ul.page-numbers" ).addClass( "pagination" );</script>
     	</nav>
         <?php
 
