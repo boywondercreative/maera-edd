@@ -14,6 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! defined( 'MAERA_EDD_FILE' ) ) {
+	define( 'MAERA_EDD_FILE', __FILE__ );
+}
+
 if ( ! defined( 'MAERA_EDD_PATH' ) ) {
 	define( 'MAERA_EDD_PATH', dirname( __FILE__ ) );
 }
