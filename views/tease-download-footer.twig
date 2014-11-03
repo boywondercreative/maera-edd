@@ -1,8 +1,9 @@
+{% from 'float_class.html.twig' import float_class as float_class %}
 <footer class="entry-footer">
 	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 		<span itemprop="priceCurrency" content="{{ function( 'edd_get_currency' ) }}"></span>
-		{{ shell.clearfix }}
-		<div class="{{ shell.float_class('left') }}">
+		<div class="clearfix">
+		<div class="{{ float_class('left') }}">
 			<span itemprop="price" content="{{ function( 'edd_get_download_price', post.ID ) }}">
 					{% if post._variable_pricing %}
 						{{ function( 'edd_price_range', post.ID ) }}
@@ -11,7 +12,7 @@
 				{% endif %}
 			</span>
 		</div>
-		<div class="{{ shell.float_class('right') }}">
+		<div class="{{ float_class('right') }}">
 			{{ function( 'edd_get_purchase_link' ) }}
 		</div>
 	</div>
