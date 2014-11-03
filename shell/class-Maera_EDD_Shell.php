@@ -32,7 +32,7 @@ class Maera_EDD_Shell {
         wp_enqueue_style( 'maera_edd_foundation' );
 
         wp_enqueue_script( 'fastclick', MAERA_EDD_URL . '/assets/vendor/fastclick.js', false );
-        wp_enqueue_script( 'foundation', MAERA_EDD_URL . '/assets/foundation.min.js', false );
+        wp_enqueue_script( 'foundation', MAERA_EDD_URL . '/assets/foundation.min.js', 'jquery' );
 
     }
 
