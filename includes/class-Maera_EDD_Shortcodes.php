@@ -51,15 +51,8 @@ class Maera_EDD_Shortcodes {
                         $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
 
                         ?>
-
-                        <?php
-                        if ( has_post_thumbnail() ) {
-                            $image = new Maera_EDD_Tonesque( get_the_ID() );
-                            $image = $image->colors();
-                        } ?>
-
-                        <figure id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class, $count_class, 'eddgc' . $count, 'effect-goliath' ) ); ?>>
-                            <div class="inside" style="background:<?php echo $image['color']; ?>;">
+                        <figure id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class, $count_class, 'eddgc' . $count ) ); ?>>
+                            <div class="inside effect-goliath">
             				 	<?php if ( 'false' != $thumbnails ) : ?>
                                     <a title="<?php _e( 'View ', 'shop-front' ) . the_title(); ?>" href="<?php the_permalink(); ?>">
                                         <?php
@@ -75,7 +68,7 @@ class Maera_EDD_Shortcodes {
 
                                 <figcaption>
                                     <a title="<?php _e( 'View ','maera-edd') . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                        <h3 style="color: <?php echo $image['fontcolor']; ?>;"><?php the_title(); ?></h3>
+                                        <h3><?php the_title(); ?></h3>
                                     </a>
                                     <div class="details">
                                         <span class="price"><?php edd_get_template_part( 'shortcode', 'content-price' ); ?></span>
