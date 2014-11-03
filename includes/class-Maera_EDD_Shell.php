@@ -7,7 +7,7 @@ class Maera_EDD_Shell {
     public function __construct() {
 
         if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
-            define( 'MAERA_SHELL_PATH', dirname( __FILE__ ) );
+            define( 'MAERA_SHELL_PATH', MAERA_EDD_PATH );
         }
 
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );

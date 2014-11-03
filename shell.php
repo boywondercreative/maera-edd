@@ -4,7 +4,7 @@ define( 'MAERA_EDD_SHELL_URL', plugins_url( '', __FILE__ ) );
 define( 'MAERA_EDD_SHELL_PATH', dirname( __FILE__ ) );
 
 // Include the framework class
-require_once MAERA_EDD_SHELL_PATH . '/class-Maera_EDD_Shell.php';
+require_once MAERA_EDD_SHELL_PATH . '/includes/class-Maera_EDD_Shell.php';
 /**
  * Include the shell
  */

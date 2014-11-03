@@ -35,4 +35,4 @@ if ( class_exists( 'Easy_Digital_Downloads' ) ) {
 }
 
 // Include the EDD-specific shell
-require_once( __DIR__ . '/shell/shell.php');
+require_once( __DIR__ . '/shell.php');
