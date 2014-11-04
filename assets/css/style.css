@@ -32,3 +32,5 @@ body.edd-checkout .content-wrapper { max-width: 700px; margin: auto; }
 .effect-goliath .edd_price { float: left; }
 
 ul.page-numbers .current { display: block; color: #fff; border-radius: 3px; padding: 0.0625rem 0.625rem 0.0625rem; background: #E33100;}
+
+table#edd_user_history { width: 100%; }
