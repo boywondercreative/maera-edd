@@ -31,6 +31,20 @@ class Maera_EDD_Customizer {
 	function create_settings( $controls ) {
 
 		$controls[] = array(
+			'type'     => 'radio',
+			'mode'     => 'image',
+			'setting'  => 'maera_edd_layout',
+			'label'    => __( 'Layout', 'maera_edd' ),
+			'section'  => 'maera_edd',
+			'priority' => 1,
+			'default'  => 0,
+			'choices'  => array(
+				0 => get_template_directory_uri() . '/assets/images/2cr.png',
+				1 => get_template_directory_uri() . '/assets/images/2cl.png',
+			),
+		);
+
+		$controls[] = array(
 			'type'     => 'select',
 			'setting'  => 'edd_button_color',
 			'label'    => __( 'Button color', 'maera_edd' ),

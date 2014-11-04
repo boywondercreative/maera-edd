@@ -6,11 +6,18 @@ class Maera_EDD_Shell {
 
     public function __construct() {
 
+        // Define the shell path to be used for views etc.
         if ( ! defined( 'MAERA_SHELL_PATH' ) ) {
             define( 'MAERA_SHELL_PATH', MAERA_EDD_PATH );
         }
 
+        add_filter( 'maera/section_class/wrapper', array( $this, 'wrapper_class' ) );
+        add_filter( 'maera/section_class/content', array( $this, 'content_class' ) );
+        add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+
+        global $content_width;
+        $content_width = ( is_active_sidebar( 'sidebar_primary' ) ) ? 843 : 1280;
 
     }
 
@@ -26,9 +33,38 @@ class Maera_EDD_Shell {
         return self::$instance;
     }
 
+    /**
+     * column classes for main content
+     * depending on whether the primary sidebar has any widgets in it or not.
+     */
+    function wrapper_class( $classes ) {
+        return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . ' row' : $classes;
+    }
+
+    /**
+     * column classes for main content
+     * depending on whether the primary sidebar has any widgets in it or not.
+     */
+    function content_class( $classes ) {
+        $alignment = ( 1 == get_theme_mod( 'maera_edd_layout' ) ) ? ' right' : null;
+        $columns   = ' small-12 large-8 columns';
+        return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . $columns . $alignment : $classes;
+    }
+
+    /**
+     * column classes for main content
+     * depending on whether the primary sidebar has any widgets in it or not.
+     */
+    function sidebar_class( $classes ) {
+        return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . ' small-12 large-4 columns' : $classes;
+    }
+
+    /**
+     * Enqueue styles and scripts
+     */
     function scripts() {
 
-        wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.min.css' );
+        wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.css' );
         wp_enqueue_style( 'maera_edd_foundation' );
 
         wp_enqueue_script( 'fastclick', MAERA_EDD_URL . '/assets/vendor/fastclick.js', false );
