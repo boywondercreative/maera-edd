@@ -45,6 +45,7 @@ class Maera_EDD_Shortcodes {
 
                     while ( $downloads->have_posts() ) : $downloads->the_post(); $count++;
 
+                        $count       = $count >= $columns ? 0 : $count;
                         $count_class = 1 < $columns ? 'edd-grid-column-' . $rand . '_' . $count : null;
 
                         $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';

@@ -123,7 +123,7 @@ class Maera_EDD {
 		$color = get_theme_mod( 'edd_button_color', 'primary' );
 
 		if ( ! is_singular( 'download' ) ) {
-			$size = 'extra_small';
+			$size = 'small';
 		} else {
 			$size = 'extra_large';
 		}

@@ -24,7 +24,7 @@ body.edd-checkout .content-wrapper { max-width: 700px; margin: auto; }
 .effect-goliath span.title, .effect-goliath .details { position: absolute; bottom: 0; left: 0; padding: 5%; color: #fff; }
 .effect-goliath .details { color: #222; width: 100%; height: 100%; position: absolute; bottom: 0; left: 0; text-transform: none; font-size: 90%; opacity: 0; -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -webkit-transform: translate3d(0,50px,0); transform: translate3d(0,50px,0); }
 .effect-goliath:hover img { -webkit-transform: translate3d(0,-30%,0); transform: translate3d(0,-30%,0); }
-.effect-goliath:hover span.title { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+.effect-goliath:hover span.title { -webkit-transform: translate3d(0,-200%,0); transform: translate3d(0,-200%,0); }
 .effect-goliath:hover p, .effect-goliath:hover .details { opacity: 1; -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 .effect-goliath figcaption { position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; }
 .effect-goliath span.title { text-shadow: 0 0 1em #000; }
