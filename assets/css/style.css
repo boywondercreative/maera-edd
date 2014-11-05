@@ -36,3 +36,8 @@ ul.page-numbers .current { display: block; color: #fff; border-radius: 3px; padd
 table#edd_user_history { width: 100%; }
 
 #edd_checkout_form_wrap input.edd-input, #edd_checkout_form_wrap textarea.edd-input { width: 100%; }
+
+.widget_edd_cart_widget ul.edd-cart { list-style-type: none; margin-left: 0; }
+.widget_edd_cart_widget .edd-cart-number-of-items, .widget_edd_cart_widget .edd_subtotal { font-style: italic; }
+.widget_edd_cart_widget .edd-cart-quantity, .widget_edd_cart_widget .subtotal { font-weight: bold; font-style: normal; }
+.widget_edd_cart_widget .edd_subtotal { margin-top: 20px; }
