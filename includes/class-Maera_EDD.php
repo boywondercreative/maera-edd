@@ -56,10 +56,10 @@ class Maera_EDD {
 
 		$options = get_option( 'maera_admin_options', array() );
 		$active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
-		if ( 'edd' == $active_shell ) {
-			// Remove the default EDD styles
-			wp_dequeue_style( 'edd-styles' );
-		}
+		// if ( 'edd' == $active_shell ) {
+		// 	// Remove the default EDD styles
+		// 	wp_dequeue_style( 'edd-styles' );
+		// }
 
 		// If EDD-Software-Specs is installed, remove its styles
 		if ( class_exists( 'EDD_Software_Specs' ) ) {
