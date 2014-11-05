@@ -1,0 +1,39 @@
+{% set width  = content_width // columns %}
+{% set height = width // 1.618 %}
+<figure id="post-{{ post.ID }}" {{ function('post_class', download_classes) }}>
+	<div class="inside effect-goliath">
+		<a class="download-featured-image" title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">
+			{% if post.thumbnail %}
+				<img src="{{ post.thumbnail.src|resize( width, height ) }}">
+			{% else %}
+				<img src="{{ default_image.src|resize( width, height, 'center' ) }}">
+			{% endif %}
+		</a>
+		<figcaption>
+			<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">
+				<span class="title clearfix">{{ post.title }}</span>
+			</a>
+			<div class="details">
+				<span class="price">{% include 'shortcode-content-price.twig' %}</span>
+				<!-- Excerpt and Content -->
+				<!-- {% if excerpt_display %}
+					{{ post.get_preview(20|apply_filters(excerpt_length)) }}
+				{% elseif display_full %}
+					{{ post.content }}
+				{% endif %} -->
+				<!-- Buy button -->
+				{% if display_buy_btn == 'yes' %}
+					<div class="edd_download_buy_button">
+						{% if not function('edd_has_variable_prices', post.ID) %}
+							{{ function('edd_get_purchase_link', [{'id':post.ID}, {'price':false}]) }}
+						{% else %}
+							<a class="button {{ btn_class }}" href="{{ post.link }}">
+								<span class="edd-add-to-cart-label">{{ __( 'Select Option', 'maera_edd' ) }}</span>
+							</a>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</figcaption>
+	</div>
+</figure>

@@ -50,58 +50,29 @@ class Maera_EDD_Shortcodes {
                         $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
                         $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
 
-                        ?>
-                        <figure id="post-<?php the_ID(); ?>" <?php post_class( array( $in_cart, $variable_priced, $column_class, $count_class, 'eddgc' . $count ) ); ?>>
-                            <div class="inside effect-goliath">
-            				 	<?php if ( 'false' != $thumbnails ) : ?>
-                                    <a title="<?php _e( 'View ', 'shop-front' ) . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                        <?php
-                                        $context = Timber::get_context();
-                                        $context['post']   = new TimberPost( get_the_ID() );
-                                        $context['columns'] = $columns;
-                                        $context['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+                        $context = Timber::get_context();
+                        $context['post']             = new TimberPost( get_the_ID() );
+                        $context['columns']          = $columns;
+                        $context['default_image']    = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+                        $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) ? true : false;
+                        $context['display_full']     = $full_content;
+                        $context['display_buy_btn']  = $buy_button;
+                        $context['in_cart']          = $in_cart;
+                        $context['variable_priced']  = $variable_priced;
+                        $context['column_class']     = $column_class;
+                        $context['count_class']      = $count_class;
+                        $context['count']            = $count;
+                        $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
+                        $context['btn_class']        = $button_defaults_class;
 
-                                        Timber::render( array( 'shortcode-download-image.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
-                                        ?>
-                                    </a>
-                                <?php endif; ?>
+                        Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
 
-                                <figcaption>
-                                    <a title="<?php _e( 'View ','maera-edd') . the_title(); ?>" href="<?php the_permalink(); ?>">
-                                        <span class="title clearfix"><?php the_title(); ?></span>
-                                    </a>
-                                    <div class="details">
-                                        <span class="price"><?php edd_get_template_part( 'shortcode', 'content-price' ); ?></span>
-                				         <!-- Excerpt and Content -->
-                                        <?php $excerpt_length = apply_filters( 'excerpt_length', 20 ); ?>
-                                        <?php if ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) : ?>
-                                            <p><?php echo wp_trim_words( get_the_excerpt(), $excerpt_length ); ?></p>
-                                        <?php elseif ( $full_content == 'yes' ) : ?>
-                                            <?php the_content(); ?>
-                                        <?php endif; ?>
-                                        <!-- Buy button -->
-                                        <?php if ( 'yes' == $buy_button ) : ?>
-                                            <div class="edd_download_buy_button">
-                                                <?php if ( ! edd_has_variable_prices( get_the_ID() ) ) : ?>
-                                                    <?php echo edd_get_purchase_link( array( 'id' => get_the_ID(), 'price' => false ) ); ?>
-                                                <?php else : ?>
-                                                    <a class="button <?php echo $button_defaults_class; ?>" href="<?php the_permalink(); ?>">
-                                                        <span class="edd-add-to-cart-label"><?php _e( 'Select Option', 'maera_edd' ); ?></span>
-                                                    </a>
-                                                <?php endif; ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                </figcaption>
-                            </div>
-                        </figure>
-                    <?php endwhile; ?>
+                    endwhile;
 
-        			<?php wp_reset_postdata(); ?>
-                [maera_grid_container_close]
-            </div>
-        <?php else : ?>
-        <?php endif ?>
+                    wp_reset_postdata();
+                echo '[maera_grid_container_close]';
+            echo '</div>';
+        endif; ?>
 
     	<nav id="downloads-shortcode" class="download-navigation">
     		<?php
