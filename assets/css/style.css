@@ -34,3 +34,8 @@ body.edd-checkout .content-wrapper { max-width: 700px; margin: auto; }
 ul.page-numbers .current { display: block; color: #fff; border-radius: 3px; padding: 0.0625rem 0.625rem 0.0625rem; background: #E33100;}
 
 table#edd_user_history { width: 100%; }
+
+.widget_edd_cart_widget ul.edd-cart { list-style-type: none; margin-left: 0; }
+.widget_edd_cart_widget .edd-cart-number-of-items, .widget_edd_cart_widget .edd_subtotal { font-style: italic; }
+.widget_edd_cart_widget .edd-cart-quantity, .widget_edd_cart_widget .subtotal { font-weight: bold; font-style: normal; }
+.widget_edd_cart_widget .edd_subtotal { margin-top: 20px; }
