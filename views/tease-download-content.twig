@@ -1,0 +1,7 @@
+<div class="panel content">
+	<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><h5 class="title clearfix">{{ post.title }}</h5></a>
+	{{ post.get_preview(20|apply_filters(excerpt_length)) }}
+	<div class="edd_download_buy_button">
+		{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+	</div>
+</div>
