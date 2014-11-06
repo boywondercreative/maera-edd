@@ -34,46 +34,48 @@ class Maera_EDD_Shortcodes {
         ob_start();
         $count = 0;
         $rand = rand( 0, 999 );
+
+        if ( 1 != $columns ) {
+            echo '<style>.downloads-list .edd-grid-column-' . $rand . '_1{clear:left;}</style>';
+        }
+
+        $list_class = 1 == $columns ? 'list' : 'grid';
         ?>
+        <div class="downloads-list <?php echo $list_class; ?>">
+            [maera_grid_row_open]
+                <?php
 
-        <?php if ( 1 != $columns ) : ?>
-            <style>.downloads-list .edd-grid-column-<?php echo $rand; ?>_1{clear:left;}</style>
+                while ( $downloads->have_posts() ) : $downloads->the_post(); $count++;
 
-            <div class="downloads-list">
-                [maera_grid_row_open]
-                    <?php
+                    $count       = $count > $columns ? 1 : $count;
+                    $count_class = 1 < $columns ? 'edd-grid-column-' . $rand . '_' . $count : null;
 
-                    while ( $downloads->have_posts() ) : $downloads->the_post(); $count++;
+                    $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
+                    $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
 
-                        $count       = $count >= $columns ? 0 : $count;
-                        $count_class = 1 < $columns ? 'edd-grid-column-' . $rand . '_' . $count : null;
+                    $context = Timber::get_context();
+                    $context['post']             = new TimberPost( get_the_ID() );
+                    $context['columns']          = $columns;
+                    $context['default_image']    = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+                    $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) ? true : false;
+                    $context['display_full']     = $full_content;
+                    $context['display_buy_btn']  = $buy_button;
+                    $context['in_cart']          = $in_cart;
+                    $context['variable_priced']  = $variable_priced;
+                    $context['column_class']     = $column_class;
+                    $context['count_class']      = $count_class;
+                    $context['count']            = $count;
+                    $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
+                    $context['btn_class']        = $button_defaults_class;
 
-                        $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
-                        $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
+                    Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
 
-                        $context = Timber::get_context();
-                        $context['post']             = new TimberPost( get_the_ID() );
-                        $context['columns']          = $columns;
-                        $context['default_image']    = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
-                        $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) ? true : false;
-                        $context['display_full']     = $full_content;
-                        $context['display_buy_btn']  = $buy_button;
-                        $context['in_cart']          = $in_cart;
-                        $context['variable_priced']  = $variable_priced;
-                        $context['column_class']     = $column_class;
-                        $context['count_class']      = $count_class;
-                        $context['count']            = $count;
-                        $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
-                        $context['btn_class']        = $button_defaults_class;
+                endwhile;
 
-                        Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
-
-                    endwhile;
-
-                    wp_reset_postdata();
-                echo '[maera_grid_container_close]';
-            echo '</div>';
-        endif; ?>
+                wp_reset_postdata();
+                ?>
+            [maera_grid_container_close]
+        </div>
 
     	<nav id="downloads-shortcode" class="download-navigation">
     		<?php
