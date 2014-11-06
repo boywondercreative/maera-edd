@@ -120,15 +120,13 @@ class Maera_EDD {
 	 */
 	function add_button_class( $defaults ) {
 
-		$color = get_theme_mod( 'edd_button_color', 'primary' );
-
 		if ( ! is_singular( 'download' ) ) {
-			$size = 'small';
+			$size = 'extra_small';
 		} else {
 			$size = 'extra_large';
 		}
 
-		$defaults['class'] =  '[maera_button_' . $color . '_' . $size . ']';
+		$defaults['class'] =  '[maera_button_default_' . $size . '] radius alert';
 		return $defaults;
 
 	}
