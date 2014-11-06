@@ -6,8 +6,9 @@
 class Maera_EDD_Timber {
 
 	function __construct() {
-		add_filter( 'edd_template_paths',         array( $this, 'templates_path' ) );
-		add_filter( 'maera/timber/locations',     array( $this, 'twigs_location' ), 1 );
+		add_filter( 'edd_template_paths',     array( $this, 'templates_path' ) );
+		add_filter( 'maera/timber/locations', array( $this, 'twigs_location' ), 1 );
+		add_filter( 'timber_context',         array( $this, 'timber_global_context' ) );
 	}
 	/**
 	 * Add the /templates folder for our custom templates
@@ -28,6 +29,15 @@ class Maera_EDD_Timber {
 
 		$locations[] = MAERA_EDD_PATH . '/views';
 		return $locations;
+
+	}
+
+	function timber_global_context( $data ) {
+
+		global $content_width, $maera_i18n;
+
+		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+		return $data;
 
 	}
 

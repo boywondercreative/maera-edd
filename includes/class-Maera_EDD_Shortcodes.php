@@ -56,7 +56,6 @@ class Maera_EDD_Shortcodes {
                     $context = Timber::get_context();
                     $context['post']             = new TimberPost( get_the_ID() );
                     $context['columns']          = $columns;
-                    $context['default_image']    = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
                     $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) ? true : false;
                     $context['display_full']     = $full_content;
                     $context['display_buy_btn']  = $buy_button;
