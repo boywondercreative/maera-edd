@@ -121,7 +121,7 @@ class Maera_EDD {
 	function add_button_class( $defaults ) {
 
 		if ( ! is_singular( 'download' ) ) {
-			$size = 'extra_small';
+			$size = 'small';
 		} else {
 			$size = 'extra_large';
 		}
