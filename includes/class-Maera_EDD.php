@@ -28,6 +28,7 @@ class Maera_EDD {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
 		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
+		add_filter( 'timber_context', array( $this, 'timber_global_context' ) );
 
 		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
 			remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
@@ -115,6 +116,16 @@ class Maera_EDD {
 
 	}
 
+	function timber_global_context( $data ) {
+
+		global $edd_options;
+
+		$data['edd_options']   = get_theme_mods();
+
+		return $data;
+
+	}
+
 	/**
 	 * Add the shell button classes to EDD buttons
 	 */
@@ -126,7 +137,7 @@ class Maera_EDD {
 			$size = 'extra_large';
 		}
 
-		$defaults['class'] =  '[maera_button_default_' . $size . '] radius alert';
+		$defaults['class'] =  $size . ' radius';
 		return $defaults;
 
 	}
