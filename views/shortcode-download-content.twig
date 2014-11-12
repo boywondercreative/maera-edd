@@ -4,10 +4,31 @@
 <div id="post-{{ post.ID }}" {{ function('post_class', download_classes) }}>
 	{# If we only have 1 column, open an wrapper div on the image #}
 	{% if columns == 1 %}[maera_grid_row_open]<div class="[maera_grid_col_3]">{% endif %}
+
+
+
+{% if columns != 1 and display_buy_btn == 'yes' %}<div class="featured-image-wrapper">{% endif %}
+	{# Buy Button #}
+	{% if display_buy_btn == 'yes' %}
+		<div class="edd_download_buy_button">
+			{% if variable_priced %}
+				<a class="[maera_button_default_small] radius alert" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+			{% else %}
+				{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+			{% endif %}
+		</div>
+	{% endif %}
+
+
+
 		<a class="download-featured-image" title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">
 			{% if post.thumbnail %}<img src="{{ post.thumbnail.src|resize( width, height ) }}">
 			{% else %}<img src="{{ default_image.src|resize( width, height, 'center' ) }}">{% endif %}
 		</a>
+
+{% if columns != 1 and display_buy_btn == 'yes' %}</div>{% endif %}
+
+
 	{# If we only have 1 column, close the wrapper div on the image #}
 	{% if columns == 1 %}</div>{% endif %}
 
@@ -30,14 +51,18 @@
 	{# if we only have 1 column and want to also display the buy button, close the column div for the content #}
 	{% if columns == 1 and display_buy_btn == 'yes' %}</div></div>{% endif %}
 	{# if we only have 1 column and want to also display the buy button, open a column div #}
-	{% if columns == 1 and display_buy_btn == 'yes' %}<div class="[maera_grid_col_4]">{% endif %}
+	{% if columns == 1 and display_buy_btn == 'yes' %}
+		<div class="[maera_grid_col_4]">
 		{# Buy Button #}
-		{% if display_buy_btn == 'yes' %}
 			<div class="edd_download_buy_button">
-				{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+				{% if variable_priced %}
+					<a class="[maera_button_default_small] radius alert" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+				{% else %}
+					{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+				{% endif %}
 			</div>
-		{% endif %}
-	{% if columns == 1 and display_buy_btn == 'yes' %}</div>{% endif %}
+		</div>
+	{% endif %}
 	</div>
 	{% if columns == 1 %}</div></div>{% endif %}
 </div>
