@@ -582,3 +582,5 @@ a.orange { color: #ed9c28; }
 a.orange:hover, a.orange:focus, a.orange:active { color: #e59016; }
 a.dark-gray { color: #363636; }
 a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
+
+.button { border-bottom-width: 3px; }
