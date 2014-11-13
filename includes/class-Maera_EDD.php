@@ -120,7 +120,7 @@ class Maera_EDD {
 
 		global $edd_options;
 
-		$data['edd_options']   = get_theme_mods();
+		$data['edd_options'] = $edd_options;
 
 		return $data;
 

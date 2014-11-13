@@ -118,3 +118,27 @@ table#edd_user_history {
 .widget_edd_cart_widget .edd_subtotal {
     margin-top: 20px;
 }
+
+.button.white { background: #F9F3CF; color: #333; }
+.button.white:hover{ background: #f7f7f7; }
+
+.button.gray { background: #666; color: #fff; }
+.button.gray:hover { background: #555; }
+
+.button.blue { background: #006F75; color: #fff; }
+.button.blue:hover { background: #00BBB5; }
+
+.button.red { background: #E33100; color: #fff; }
+.button.red:hover { background: #E30000; }
+
+.button.green { background: #3CB059; color: #fff; }
+.button.green:hover { background: #74C76D; }
+
+.button.yellow { background: #FFB007; color: #fff; }
+.button.yellow:hover { background: #FFF755; }
+
+.button.orange { background: #E26D18; color: #fff; }
+.button.orange:hover { background: #F75E11; }
+
+.button.dark-gray { background: #342D27; color: #fff; }
+.button.dark-gray:hover { background: #333; }
