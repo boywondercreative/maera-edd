@@ -23,38 +23,34 @@
 
 		<div class="content" id="content" itemprop="mainContentOfPage">
 
-			{{ row_open( 'div', null, 'bg' ) }}
+			<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
+				{% do action( 'maera/main/before', post.ID ) %}
+				<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
 
-				<div class="content-primary-wrapper {{ 'main'|apply_filters( 'maera/section_class/wrapper' ) }}">
-					{% do action( 'maera/main/before', post.ID ) %}
-					<main class="{{ 'main'|apply_filters( 'maera/section_class/content' ) }}" role="main">
+					{% if title %}<h1>{{ title }}</h1>{% endif %}
+					{% block content %}
+						{{ i18n.sorrynocontent }}
+					{% endblock %}
 
-						{% if title %}<h1>{{ title }}</h1>{% endif %}
-						{% block content %}
-							{{ i18n.sorrynocontent }}
-						{% endblock %}
+				</main><!-- /.main -->
+				{% do action( 'maera/main/after', post.ID ) %}
 
-					</main><!-- /.main -->
-					{% do action( 'maera/main/after', post.ID ) %}
-
-					{# PRIMARY SIDEBAR #}
-					{% if sidebar.primary %}
-						<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
-							{{ sidebar.primary }}
-						</aside>
-					{% endif %}
-				</div>
-
-				{# SECONDARY SIDEBAR #}
-				{% if sidebar.secondary %}
-					<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/secondary' ) }}" role="complementary">
-						{{ sidebar.secondary }}
+				{# PRIMARY SIDEBAR #}
+				{% if sidebar.primary %}
+					<aside id="sidebar-primary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/primary' ) }}" role="complementary">
+						{{ sidebar.primary }}
 					</aside>
 				{% endif %}
+			</div>
 
-				<div class="clearfix"></div>
+			{# SECONDARY SIDEBAR #}
+			{% if sidebar.secondary %}
+				<aside id="sidebar-secondary" class="{{ 'sidebar'|apply_filters( 'maera/section_class/secondary' ) }}" role="complementary">
+					{{ sidebar.secondary }}
+				</aside>
+			{% endif %}
 
-			{{ row_close( 'div' ) }}
+			<div class="clearfix"></div>
 
 		</div><!-- /#content -->
 
