@@ -48,6 +48,9 @@ class Maera_EDD_Shell {
     function content_class( $classes ) {
         $alignment = ( 1 == get_theme_mod( 'maera_edd_layout' ) ) ? ' right' : null;
         $columns   = ' small-12 large-8 columns';
+		if ( edd_is_checkout() ) {
+			$columns = ' small-12 medium-10 medium-offset-1 large-6 large-offset-3 columns';
+		}
         return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . $columns . $alignment : $classes;
     }
 
