@@ -15,6 +15,7 @@ class Maera_EDD_Shell {
         add_filter( 'maera/section_class/content', array( $this, 'content_class' ) );
         add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
+		add_action( 'widgets_init', array( $this, 'remove_secondary_sidebar' ) );
 
         global $content_width;
         $content_width = ( is_active_sidebar( 'sidebar_primary' ) ) ? 843 : 1280;
@@ -32,6 +33,13 @@ class Maera_EDD_Shell {
 
         return self::$instance;
     }
+
+	/**
+	 * Remove the secondary sidebar
+	 */
+	function remove_secondary_sidebar() {
+		unregister_sidebar( 'sidebar_secondary' );
+	}
 
     /**
      * column classes for main content
