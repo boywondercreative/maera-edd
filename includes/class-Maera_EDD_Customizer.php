@@ -10,6 +10,9 @@ class Maera_EDD_Customizer {
 		add_action( 'customize_register', array( $this, 'create_section' ) );
 		add_filter( 'kirki/controls', array( $this, 'create_settings' ) );
 
+		add_action( 'customize_save_after',array( $this, 'sync_edd_colors_options' ) );
+		add_action( 'wp',array( $this, 'sync_edd_colors_theme_mod' ) );
+
 	}
 
 	/*
@@ -46,20 +49,21 @@ class Maera_EDD_Customizer {
 
 		$controls[] = array(
 			'type'     => 'select',
-			'setting'  => 'edd_button_color',
+			'setting'  => 'checkout_color',
 			'label'    => __( 'Button color', 'maera_edd' ),
-			'subtitle' => __( 'Select the button color for the purchase/buynow button', 'maera_edd' ),
+			'subtitle' => __( 'Select the button color for the purchase/buynow button. Please note that this change will be applied after you save the options (no live-preview available).', 'maera_edd' ),
 			'section'  => 'maera_edd',
 			'priority' => 12,
 			'default'  => 'primary',
 			'choices'  => array(
-				'default' => 1,
-				'primary' => 2,
-				'success' => 3,
-				'info'    => 4,
-				'warning' => 5,
-				'danger'  => 6,
-				'link'    => 7,
+				'white'     => __( 'White', 'edd' ),
+				'gray'      => __( 'Gray', 'edd' ),
+				'blue'      => __( 'Blue', 'edd' ),
+				'red'       => __( 'Red', 'edd' ),
+				'green'     => __( 'Green', 'edd' ),
+				'yellow'    => __( 'Yellow', 'edd' ),
+				'orange'    => __( 'Orange', 'edd' ),
+				'dark-gray' => __( 'Dark Gray', 'edd' ),
 			),
 
 		);
@@ -75,6 +79,27 @@ class Maera_EDD_Customizer {
 
 		return $controls;
 
+	}
+
+	function sync_edd_colors_options() {
+		global $edd_options;
+
+		$checkout_color = get_theme_mod( 'checkout_color' );
+
+		if ( $checkout_color != $edd_options['checkout_color'] ) {
+			$edd_options['checkout_color'] = $checkout_color;
+			update_option( 'edd_settings', $edd_options );
+		}
+	}
+
+	function sync_edd_colors_theme_mod() {
+		global $edd_options;
+
+		$checkout_color = get_theme_mod( 'checkout_color' );
+
+		if ( $checkout_color != $edd_options['checkout_color'] ) {
+			set_theme_mod( 'checkout_color', $edd_options['checkout_color'] );
+		}
 	}
 
 }

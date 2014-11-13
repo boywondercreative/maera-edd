@@ -10,7 +10,7 @@
 		{# Buy Button #}
 			<div class="edd_download_buy_button">
 				{% if variable_priced %}
-					<a class="[maera_button_default_small] {{ edd_options.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+					<a class="[maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
 				{% else %}
 					{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
 				{% endif %}
@@ -50,7 +50,7 @@
 		{# Buy Button #}
 			<div class="edd_download_buy_button">
 				{% if variable_priced %}
-					<a class="[maera_button_default_small] {{ edd_options.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+					<a class="[maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
 				{% else %}
 					{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
 				{% endif %}
