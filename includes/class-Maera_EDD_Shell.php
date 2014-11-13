@@ -67,6 +67,8 @@ class Maera_EDD_Shell {
         wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.css' );
         wp_enqueue_style( 'maera_edd_foundation' );
 
+		wp_dequeue_style( 'edd-styles' );
+
         wp_enqueue_script( 'fastclick', MAERA_EDD_URL . '/assets/vendor/fastclick.js', false );
         wp_enqueue_script( 'foundation', MAERA_EDD_URL . '/assets/foundation.min.js', 'jquery' );
 
