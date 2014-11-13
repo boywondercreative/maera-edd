@@ -292,133 +292,133 @@ input[type="submit"].edd-submit:focus,
 }
 
 /** White */
-.edd-submit.button.white {
+.button.white {
   color: #333333;
   background: #ffffff;
   border-color: #cccccc;
 }
 
-.edd-submit.button.white:hover,
-.edd-submit.button.white:focus,
-.edd-submit.button.white:active {
+.button.white:hover,
+.button.white:focus,
+.button.white:active {
   color: #333333;
   background: #ebebeb;
   border-color: #adadad;
 }
 
-.edd-submit.button.white:active {
+.button.white:active {
   background-image: none;
 }
 
 /** Blue */
-.edd-submit.button.blue {
+.button.blue {
   color: #ffffff;
   background: #428bca;
   border-color: #357ebd;
 }
-.edd-submit.button.blue:hover,
-.edd-submit.button.blue:focus,
-.edd-submit.button.blue.active {
+.button.blue:hover,
+.button.blue:focus,
+.button.blue.active {
   color: #ffffff;
   background: #3276b1;
   border-color: #285e8e;
 }
-.edd-submit.button.blue.active {
+.button.blue.active {
   background-image: none;
 }
 
 /** Red */
-.edd-submit.button.red {
+.button.red {
   color: #ffffff;
   background: #d9534f;
   border-color: #d43f3a;
 }
 
-.edd-submit.button.red:hover,
-.edd-submit.button.red:focus,
-.edd-submit.button.red:active {
+.button.red:hover,
+.button.red:focus,
+.button.red:active {
   color: #ffffff;
   background: #d2322d;
   border-color: #ac2925;
 }
 
-.edd-submit.button.red:active {
+.button.red:active {
   background-image: none;
 }
 
 /** Green */
-.edd-submit.button.green {
+.button.green {
   color: #ffffff;
   background: #5cb85c;
   border-color: #4cae4c;
 }
 
-.edd-submit.button.green:hover,
-.edd-submit.button.green:focus,
-.edd-submit.button.green:active {
+.button.green:hover,
+.button.green:focus,
+.button.green:active {
   color: #ffffff;
   background: #47a447;
   border-color: #398439;
 }
 
-.edd-submit.button.green:active {
+.button.green:active {
   background-image: none;
 }
 
 /** Yellow */
-.edd-submit.button.yellow {
+.button.yellow {
   color: #ffffff;
   background: #f0ad4e;
   border-color: #eea236;
 }
 
-.edd-submit.button.yellow:hover,
-.edd-submit.button.yellow:focus,
-.edd-submit.button.yellow:active {
+.button.yellow:hover,
+.button.yellow:focus,
+.button.yellow:active {
   color: #ffffff;
   background: #ed9c28;
   border-color: #d58512;
 }
 
-.edd-submit.button.yellow:active {
+.button.yellow:active {
   background-image: none;
 }
 
 /** Orange */
-.edd-submit.button.orange {
+.button.orange {
   color: #ffffff;
   background: #ed9c28;
   border-color: #e3921e;
 }
 
-.edd-submit.button.orange:hover,
-.edd-submit.button.orange:focus,
-.edd-submit.button.orange:active {
+.button.orange:hover,
+.button.orange:focus,
+.button.orange:active {
   color: #ffffff;
   background: #e59016;
   border-color: #d58512;
 }
 
-.edd-submit.button.orange:active {
+.button.orange:active {
   background-image: none;
 }
 
 /** Dark Gray */
-.edd-submit.button.dark-gray {
+.button.dark-gray {
   color: #fff;
   background: #363636;
   border-color: #222;
 }
 
-.edd-submit.button.dark-gray:hover,
-.edd-submit.button.dark-gray:focus,
-.edd-submit.button.dark-gray:active {
+.button.dark-gray:hover,
+.button.dark-gray:focus,
+.button.dark-gray:active {
   color: #fff;
   background: #333;
   border-color: #adadad;
 }
 
-.edd-submit.button.dark-gray:active { background-image: none; }
+.button.dark-gray:active { background-image: none; }
 
 /* =Downloads Shortcode
 -------------------------------------------------------------- */
@@ -563,27 +563,22 @@ table#edd_user_history {
 .widget_edd_cart_widget .edd_subtotal {
     margin-top: 20px;
 }
+.edd-remove-from-cart.button.red { margin: 0; }
 
-.button.white { background: #F9F3CF; color: #333; }
-.button.white:hover{ background: #f7f7f7; }
+.edd-cart-item.row {
+  border-bottom: 1px solid #dedede;
+  padding: 5px 0;
+}
 
-.button.gray { background: #666; color: #fff; }
-.button.gray:hover { background: #555; }
-
-.button.blue { background: #006F75; color: #fff; }
-.button.blue:hover { background: #00BBB5; }
-
-.button.red { background: #E33100; color: #fff; }
-.button.red:hover { background: #E30000; }
-
-.button.green { background: #3CB059; color: #fff; }
-.button.green:hover { background: #74C76D; }
-
-.button.yellow { background: #FFB007; color: #fff; }
-.button.yellow:hover { background: #FFF755; }
-
-.button.orange { background: #E26D18; color: #fff; }
-.button.orange:hover { background: #F75E11; }
-
-.button.dark-gray { background: #342D27; color: #fff; }
-.button.dark-gray:hover { background: #333; }
+a.blue { color: #428bca; }
+a.blue:hover, a.blue:focus, a.blue.active { color: #3276b1; }
+a.red { color: #d9534f; }
+a.red:hover, a.red:focus, a.red:active { color: #d2322d; }
+a.green { color: #5cb85c; }
+a.green:hover, a.green:focus, a.green:active { color: #47a447; }
+a.yellow { color: #f0ad4e; }
+a.yellow:hover, a.yellow:focus, a.yellow:active { color: #ed9c28; }
+a.orange { color: #ed9c28; }
+a.orange:hover, a.orange:focus, a.orange:active { color: #e59016; }
+a.dark-gray { color: #363636; }
+a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
