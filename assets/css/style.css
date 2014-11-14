@@ -633,7 +633,7 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
 
 .button { border-bottom-width: 3px; }
 
-.header.main {
+.header.hero {
   padding-top: 3em;
   padding-bottom: 3em;
   background: #f2f2f2;

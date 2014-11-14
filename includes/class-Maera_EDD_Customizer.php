@@ -74,7 +74,26 @@ class Maera_EDD_Customizer {
 			'label'    => __( 'Replace variables radio select with a dropdown', 'maera_edd' ),
 			'section'  => 'maera_edd',
 			'default'  => 0,
-			'priority' => 1,
+			'priority' => 20,
+		);
+
+		$controls[] = array(
+			'type'         => 'background',
+			'setting'      => 'hero_bg',
+			'label'        => __( 'Header Background', 'maera_edd' ),
+			'description'  =>   __( 'Background Color', 'maera_edd' ),
+			'section'      => 'maera_edd',
+			'default'      => array(
+				'color'    => '#ffffff',
+				'image'    => null,
+				'repeat'   => 'repeat',
+				'size'     => 'inherit',
+				'attach'   => 'inherit',
+				'position' => 'left-top',
+				'opacity'  => 100,
+			),
+			'priority' => 30,
+			'output' => '.header.hero',
 		);
 
 		return $controls;
