@@ -270,7 +270,9 @@ input[type="submit"].edd-submit:focus,
 }
 
 /** Gray (Default) */
-.edd-submit.button,.edd-submit.button,.edd-submit.button:visited,.edd-submit.button,.edd-submit.button.gray {
+.edd-submit.button,
+.edd-submit.button:visited,
+.edd-submit.button.gray {
   color: #333333;
   background: #f0f0f0;
   border-color: #cccccc;
@@ -281,18 +283,26 @@ input[type="submit"].edd-submit:focus,
 .edd-submit.button:active,
 .edd-submit.button.gray:hover,
 .edd-submit.button.gray:focus,
-.edd-submit.button.gray:active {
+.edd-submit.button.gray:active,
+.top-bar-section ul li > a.button:hover,
+.top-bar-section ul li > a.button:focus,
+.top-bar-section ul li > a.button:active,
+.top-bar-section ul li > a.button.gray:hover,
+.top-bar-section ul li > a.button.gray:focus,
+.top-bar-section ul li > a.button.gray:active {
   color: #333333;
   background: #ebebeb;
   border-color: #adadad;
 }
 
-.edd-submit.button.gray:active {
+.edd-submit.button.gray:active,
+.top-bar-section ul li > a.button.gray:active {
   background-image: none;
 }
 
 /** White */
-.button.white {
+.button.white,
+.top-bar-section ul li > a.button.white {
   color: #333333;
   background: #ffffff;
   border-color: #cccccc;
@@ -300,35 +310,47 @@ input[type="submit"].edd-submit:focus,
 
 .button.white:hover,
 .button.white:focus,
-.button.white:active {
+.button.white:active,
+.top-bar-section ul li > a.button.white:hover,
+.top-bar-section ul li > a.button.white:focus,
+.top-bar-section ul li > a.button.white:active {
   color: #333333;
   background: #ebebeb;
   border-color: #adadad;
 }
 
-.button.white:active {
+.button.white:active,
+.top-bar-section ul li > a.button.white:active {
   background-image: none;
 }
 
 /** Blue */
-.button.blue {
+.button.blue,
+.top-bar-section ul li > a.button.blue {
   color: #ffffff;
   background: #428bca;
   border-color: #357ebd;
 }
 .button.blue:hover,
 .button.blue:focus,
-.button.blue.active {
+.button.blue.active,
+.top-bar-section ul li > a.button.blue:hover,
+.top-bar-section ul li > a.button.blue:focus,
+.top-bar-section ul li > a.button.blue:active,
+.top-bar-section ul li > a.button.blue.active {
   color: #ffffff;
   background: #3276b1;
   border-color: #285e8e;
 }
-.button.blue.active {
+.button.blue.active,
+.top-bar-section ul li > a.button.blue:active,
+.top-bar-section ul li > a.button.blue.active {
   background-image: none;
 }
 
 /** Red */
-.button.red {
+.button.red,
+.top-bar-section ul li > a.button.red {
   color: #ffffff;
   background: #d9534f;
   border-color: #d43f3a;
@@ -336,18 +358,23 @@ input[type="submit"].edd-submit:focus,
 
 .button.red:hover,
 .button.red:focus,
-.button.red:active {
+.button.red:active,
+.top-bar-section ul li > a.button.red:hover,
+.top-bar-section ul li > a.button.red:focus,
+.top-bar-section ul li > a.button.red:active {
   color: #ffffff;
   background: #d2322d;
   border-color: #ac2925;
 }
 
-.button.red:active {
+.button.red:active,
+.top-bar-section ul li > a.button.red:active {
   background-image: none;
 }
 
 /** Green */
-.button.green {
+.button.green,
+.top-bar-section ul li > a.button.green {
   color: #ffffff;
   background: #5cb85c;
   border-color: #4cae4c;
@@ -355,18 +382,23 @@ input[type="submit"].edd-submit:focus,
 
 .button.green:hover,
 .button.green:focus,
-.button.green:active {
+.button.green:active,
+.top-bar-section ul li > a.button.green:hover,
+.top-bar-section ul li > a.button.green:focus,
+.top-bar-section ul li > a.button.green:active {
   color: #ffffff;
   background: #47a447;
   border-color: #398439;
 }
 
-.button.green:active {
+.button.green:active,
+.top-bar-section ul li > a.button.green:active {
   background-image: none;
 }
 
 /** Yellow */
-.button.yellow {
+.button.yellow,
+.top-bar-section ul li > a.button.yellow {
   color: #ffffff;
   background: #f0ad4e;
   border-color: #eea236;
@@ -374,18 +406,23 @@ input[type="submit"].edd-submit:focus,
 
 .button.yellow:hover,
 .button.yellow:focus,
-.button.yellow:active {
+.button.yellow:active,
+.top-bar-section ul li > a.button.yellow:hover,
+.top-bar-section ul li > a.button.yellow:focus,
+.top-bar-section ul li > a.button.yellow:active {
   color: #ffffff;
   background: #ed9c28;
   border-color: #d58512;
 }
 
-.button.yellow:active {
+.button.yellow:active,
+.top-bar-section ul li > a.button.yellow:active {
   background-image: none;
 }
 
 /** Orange */
-.button.orange {
+.button.orange,
+.top-bar-section ul li > a.button.orange {
   color: #ffffff;
   background: #ed9c28;
   border-color: #e3921e;
@@ -393,18 +430,23 @@ input[type="submit"].edd-submit:focus,
 
 .button.orange:hover,
 .button.orange:focus,
-.button.orange:active {
+.button.orange:active,
+.top-bar-section ul li > a.button.orange:hover,
+.top-bar-section ul li > a.button.orange:focus,
+.top-bar-section ul li > a.button.orange:active {
   color: #ffffff;
   background: #e59016;
   border-color: #d58512;
 }
 
-.button.orange:active {
+.button.orange:active,
+.top-bar-section ul li > a.button.orange:active {
   background-image: none;
 }
 
 /** Dark Gray */
-.button.dark-gray {
+.button.dark-gray,
+.top-bar-section ul li > a.button.dark-gray {
   color: #fff;
   background: #363636;
   border-color: #222;
@@ -412,13 +454,19 @@ input[type="submit"].edd-submit:focus,
 
 .button.dark-gray:hover,
 .button.dark-gray:focus,
-.button.dark-gray:active {
+.button.dark-gray:active,
+.top-bar-section ul li > a.button.dark-gray:hover,
+.top-bar-section ul li > a.button.dark-gray:focus,
+.top-bar-section ul li > a.button.dark-gray:active {
   color: #fff;
   background: #333;
   border-color: #adadad;
 }
 
-.button.dark-gray:active { background-image: none; }
+.button.dark-gray:active,
+.top-bar-section ul li > a.button.dark-gray:active {
+  background-image: none;
+}
 
 /* =Downloads Shortcode
 -------------------------------------------------------------- */
