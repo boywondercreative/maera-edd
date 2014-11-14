@@ -15,7 +15,7 @@ class Maera_EDD_Shell {
         add_filter( 'maera/section_class/content', array( $this, 'content_class' ) );
         add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
-		add_action( 'widgets_init', array( $this, 'remove_secondary_sidebar' ) );
+		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 
         global $content_width;
         $content_width = ( is_active_sidebar( 'sidebar_primary' ) ) ? 843 : 1280;
@@ -33,13 +33,6 @@ class Maera_EDD_Shell {
 
         return self::$instance;
     }
-
-	/**
-	 * Remove the secondary sidebar
-	 */
-	function remove_secondary_sidebar() {
-		unregister_sidebar( 'sidebar_secondary' );
-	}
 
     /**
      * column classes for main content
@@ -70,14 +63,42 @@ class Maera_EDD_Shell {
         return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . ' small-12 large-4 columns' : $classes;
     }
 
+
+	/**
+	* Register sidebars
+	*/
+	function widgets_init() {
+
+		$class        = apply_filters( 'maera/widgets/class', '' );
+		$before_title = apply_filters( 'maera/widgets/title/before', '<h3 class="widget-title">' );
+		$after_title  = apply_filters( 'maera/widgets/title/after', '</h3>' );
+
+		register_sidebar( array(
+			'name'          => __( 'Header', 'maera_edd' ),
+			'id'            => 'sidebar_header',
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h3 class="widget-title"',
+			'after_title'   => '</h3>',
+		) );
+
+		// Remove the secondary sidebar
+		unregister_sidebar( 'sidebar_secondary' );
+
+	}
+
     /**
      * Enqueue styles and scripts
      */
     function scripts() {
 
 		// Foundation core
-        wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.css' );
-        wp_enqueue_style( 'maera_edd_foundation' );
+		wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.css' );
+		wp_enqueue_style( 'maera_edd_foundation' );
+
+		// Foundation icons
+		wp_register_style( 'maera_edd_foundation_icons', MAERA_EDD_URL . '/assets/foundation-icons/foundation-icons.css' );
+		wp_enqueue_style( 'maera_edd_foundation_icons' );
 
 		// Add Foundation required scripts
 		wp_enqueue_script( 'fastclick', MAERA_EDD_URL . '/assets/vendor/fastclick.js', false );
