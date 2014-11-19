@@ -638,3 +638,146 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   padding-bottom: 3em;
   background: #f2f2f2;
 }
+
+
+/*----------------*/
+/* Zoe - hover type */
+/* https://github.com/codrops/HoverEffectIdeas */
+/*----------------*/
+.effect-zoe {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.effect-zoe img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.8;
+}
+
+.effect-zoe .content {
+  top: auto;
+  bottom: 0;
+  background: #fff;
+  color: #333;
+  padding: 1em;
+  height: 2.75em;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.effect-zoe .content::before,
+.effect-zoe .content::after {
+  pointer-events: none;
+}
+
+.effect-zoe .content,
+.effect-zoe .content > a {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+.effect-zoe .content > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.effect-zoe h5,
+.effect-zoe p,
+.effect-zoe div {
+  margin: 0;
+}
+
+.effect-zoe h5 {
+  float: left;
+}
+
+.effect-zoe p.icon-links a {
+  float: right;
+  font-size: 1.6em;
+  margin-top: -10px;
+}
+
+.effect-zoe div[itemprop="description"] {
+  width: 90%;
+  position: absolute;
+  bottom: 8em;
+  padding: 0;
+  color: #333;
+  text-transform: none;
+  font-size: 80%;
+  opacity: 0;
+  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+}
+
+.effect-zoe h5,
+.effect-zoe p.icon-links a {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,200%,0);
+  transform: translate3d(0,200%,0);
+}
+
+.effect-zoe p.icon-links a span::before {
+  display: inline-block;
+  padding: 4px 10px;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.effect-zoe h5 {
+  display: inline-block;
+}
+
+.effect-zoe:hover div[itemprop="description"],
+.effect-zoe:hover img {
+  opacity: 1;
+}
+
+.effect-zoe:hover .content,
+.effect-zoe:hover h5,
+.effect-zoe:hover p.icon-links a {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.effect-zoe:hover h5 {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+}
+
+.effect-zoe:hover p.icon-links a:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.effect-zoe:hover p.icon-links a:nth-child(2) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+.effect-zoe:hover p.icon-links a:first-child {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}

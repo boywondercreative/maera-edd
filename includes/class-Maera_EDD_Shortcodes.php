@@ -67,7 +67,16 @@ class Maera_EDD_Shortcodes {
                     $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
                     $context['btn_class']        = $button_defaults_class;
 
-                    Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+                    if ( get_theme_mod('hover_type', 'edd') == 'edd' ) {
+                        
+                        Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+
+                    } elseif ( get_theme_mod('hover_type', 'edd') == 'zoe' ) {
+                        
+                        $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count, 'effect-zoe' );
+
+                        Timber::render( array( 'shortcode-download-content-zoe.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
+                    }
 
                 endwhile;
 

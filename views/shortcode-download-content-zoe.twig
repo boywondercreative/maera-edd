@@ -1,0 +1,24 @@
+{% set width  = content_width // columns %}
+{% set height = width // 1.618 %}
+
+<div id="post-{{ post.ID }}" {{ function('post_class', download_classes) }}>
+
+	{% if post.thumbnail %}<img src="{{ post.thumbnail.src|resize( width, height ) }}">
+	{% else %}<img src="{{ default_image.src|resize( width, height, 'center' ) }}">{% endif %}
+
+	<div class="content">
+		<h5 class="title clearfix">{{ post.title }}</h5>
+		<p class="icon-links">
+			{% if variable_priced %}
+				<a title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
+			{% else %}
+				<a title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="fi fi-shopping-cart"></span></a>
+			{% endif %}
+		</p>
+		<div itemprop="description">
+		  {{ post.get_preview(12|apply_filters(excerpt_length)) }}
+		</div>
+	</div>
+
+</div>
+

@@ -69,6 +69,21 @@ class Maera_EDD_Customizer {
 		);
 
 		$controls[] = array(
+			'type'     => 'select',
+			'setting'  => 'hover_type',
+			'label'    => __( 'Hover Type', 'maera_edd' ),
+			'subtitle' => __( 'Select the hover type for the grid display.', 'maera_edd' ),
+			'section'  => 'maera_edd',
+			'priority' => 13,
+			'default'  => 'edd',
+			'choices'  => array(
+				'edd'  => __( 'EDD style', 'maera_edd' ),
+				'zoe'  => __( 'Zoe', 'maera_edd' ),
+			),
+
+		);
+
+		$controls[] = array(
 			'type'     => 'checkbox',
 			'setting'  => 'edd_variables_dropdown',
 			'label'    => __( 'Replace variables radio select with a dropdown', 'maera_edd' ),
