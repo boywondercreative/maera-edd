@@ -69,7 +69,7 @@ class Maera_EDD_Shortcodes {
         $rand = rand( 0, 999 );
 
         if ( 1 != $columns ) {
-            echo '<style>.downloads-list .edd-grid-column-' . $rand . '_1{clear:left;}</style>';
+            echo '<style>.downloads-list .edd-grid-column-' . $rand . '_1{clear:left;}.downloads-list [class*="column"] + [class*="column"]:last-child{float: left;}</style>';
         }
 
         $list_class = 1 == $columns ? 'list' : 'grid';
@@ -101,11 +101,11 @@ class Maera_EDD_Shortcodes {
                     $context['btn_class']        = $button_defaults_class;
 
                     if ( $columns == 1 || get_theme_mod('hover_type', 'edd') == 'edd' ) {
-                        
+
                         Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
 
                     } elseif ( get_theme_mod('hover_type', 'edd') == 'zoe' ) {
-                        
+
                         $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count, 'effect-zoe' );
 
                         Timber::render( array( 'shortcode-download-content-zoe.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
