@@ -4,8 +4,41 @@ class Maera_EDD_Shortcodes {
 
     function __construct() {
         add_filter( 'downloads_shortcode', array( $this, 'modify_edd_download_shortcode' ), 10, 11 );
+		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ) );
     }
 
+	function pre_get_posts() {
+
+		if ( is_post_type_archive( 'download' ) || is_tax( 'download_category' ) || is_tax( 'download_tag' ) ) {
+			add_filter( 'edd_downloads_query', array( $this, 'archives_query' ) );
+		}
+
+	}
+
+	function archives_query( $query ) {
+		global $wp_query;
+		$query_array = (array) $wp_query;
+
+		if ( is_tax( 'download_category' ) ) {
+			$term = get_term_by( 'slug', $query_array['query']['download_category'], 'download_category' );
+			$query['tax_query'][] = array(
+				'taxonomy'  => 'download_category',
+				'tax_query' => 'term_id',
+				'terms'     => $term->term_id,
+				'operator'  => 'IN'
+			);
+		} else if ( is_tax( 'download_tag' ) ) {
+			$term = get_term_by( 'slug', $query_array['query']['download_tag'], 'download_tag' );
+			$query['tax_query'][] = array(
+				'taxonomy'  => 'download_tag',
+				'tax_query' => 'term_id',
+				'terms'     => $term->term_id,
+				'operator'  => 'IN'
+			);
+		}
+
+		return $query;
+	}
 
     /**
      * Filter [download] shortcode HTML

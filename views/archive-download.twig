@@ -1,0 +1,31 @@
+{#<?php#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<div class="content-wrapper">
+
+		<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
+
+			{% include 'single-title.twig' %}
+
+			{{ shell.clearfix }}
+			{% do action( 'maera/page/pre_content' ) %}
+			{{ post.content }}
+			{% filter shortcodes %}
+				[downloads query="{{ query }}"]
+				<!-- {{ dump(query) }} -->
+			{% endfilter %}
+			{{ shell.clearfix }}
+			{{ function( 'wp_link_pages', {
+				'before': '<div class="page-links">' . i18n.pages,
+				'after': '</div>'
+			}) }}
+			{{ shell.clearfix }}
+			{% do action( 'maera/page/after_content' ) %}
+
+		</article>
+
+	</div> <!-- /content-wrapper -->
+
+{% endblock %}
