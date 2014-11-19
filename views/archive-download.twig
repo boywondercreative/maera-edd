@@ -12,10 +12,7 @@
 			{{ shell.clearfix }}
 			{% do action( 'maera/page/pre_content' ) %}
 			{{ post.content }}
-			{% filter shortcodes %}
-				[downloads query="{{ query }}"]
-				<!-- {{ dump(query) }} -->
-			{% endfilter %}
+			{% filter shortcodes %}[downloads columns="2"]{% endfilter %}
 			{{ shell.clearfix }}
 			{{ function( 'wp_link_pages', {
 				'before': '<div class="page-links">' . i18n.pages,
