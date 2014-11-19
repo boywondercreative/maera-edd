@@ -10,9 +10,9 @@
 		<h5 class="title clearfix">{{ post.title }}</h5>
 		<p class="icon-links">
 			{% if variable_priced %}
-				<a title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
+				<a title="{{ __( 'Details', 'maera_edd' ) }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
 			{% else %}
-				<a title="{{ __( 'Add to cart', 'maera_edd' ) }} {{ post.title }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="fi fi-shopping-cart"></span></a>
+				<a title="{{ __( 'Add to cart', 'maera_edd' ) }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="fi fi-shopping-cart"></span></a>
 			{% endif %}
 		</p>
 		<div itemprop="description">
