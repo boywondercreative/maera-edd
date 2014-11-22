@@ -674,6 +674,7 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   height: 2.75em;
   font-size: 1.25em;
   text-transform: uppercase;
+  border-bottom: 1px dotted lightgrey;
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
   -webkit-transform: translate3d(0,100%,0);
@@ -744,7 +745,7 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
 
 .effect-zoe p.icon-links a span::before {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 10px;
   speak: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

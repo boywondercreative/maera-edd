@@ -1,9 +1,17 @@
 {#<?php#}
+{% from 'button_group_classes.html.twig' import button_group_classes as button_group_classes %}
+{% from 'button_classes.html.twig' import button_classes as button_classes %}
+
 {% extends "base.twig" %}
 
 {% block content %}
 
 	<div class="content-wrapper">
+
+		<div id="isotope-sort" class="{{ button_group_classes() }}">
+			<button class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-sort-by="title-asc">Title <i class="fi-arrow-up"></i></button>
+		 	<button class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-sort-by="title-dsc">Title <i class="fi-arrow-down"></i></button>
+		</div>
 
 		<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 
