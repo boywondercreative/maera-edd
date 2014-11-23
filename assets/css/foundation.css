@@ -1082,7 +1082,7 @@ select {
     position: relative;
     right: 91.66667%;
     left: auto; } }
-button, .button {
+button, .button, input[type="submit"] {
   border-style: solid;
   border-width: 0px;
   cursor: pointer;
@@ -1105,9 +1105,9 @@ button, .button {
   border-color: #018c72;
   color: white;
   transition: background-color 300ms ease-out; }
-  button:hover, button:focus, .button:hover, .button:focus {
+  button:hover, button:focus, .button:hover, .button:focus, input[type="submit"]:focus, input[type="submit"]:hover {
     background-color: #018c72; }
-  button:hover, button:focus, .button:hover, .button:focus {
+  button:hover, button:focus, .button:hover, .button:focus, input[type="submit"]:focus {
     color: white; }
   button.secondary, .button.secondary {
     background-color: #efefef;
