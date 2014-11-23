@@ -18,7 +18,12 @@ class Maera_EDD_Shell {
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 
         global $content_width;
-        $content_width = ( is_active_sidebar( 'sidebar_primary' ) ) ? 843 : 1280;
+        $content_width = ( 0 == get_theme_mod( 'maera_edd_layout', 0 ) && is_active_sidebar( 'sidebar_primary' ) ) ? 1280 : 843;
+
+		// Disable the sidebar if layout is full-width.
+		if ( 0 == get_theme_mod( 'maera_edd_layout', 0 ) ) {
+			add_filter( 'maera/sidebar/primary', '__return_false' );
+		}
 
     }
 
@@ -47,8 +52,10 @@ class Maera_EDD_Shell {
      * depending on whether the primary sidebar has any widgets in it or not.
      */
     function content_class( $classes ) {
-        $alignment = ( 1 == get_theme_mod( 'maera_edd_layout' ) ) ? ' right' : null;
-        $columns   = ' small-12 large-8 columns';
+		$layout    = get_theme_mod( 'maera_edd_layout', 1 );
+        $alignment = ( 2 == get_theme_mod( 'maera_edd_layout' ) ) ? ' right' : null;
+        $columns   = ' small-12 columns';
+		$columns  .= ( 0 == $layout ) ? ' large-12' : ' large-8';
 		if ( edd_is_checkout() ) {
 			$columns = ' small-12 medium-10 medium-offset-1 large-6 large-offset-3 columns';
 		}

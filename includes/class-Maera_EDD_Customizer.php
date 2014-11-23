@@ -42,8 +42,9 @@ class Maera_EDD_Customizer {
 			'priority' => 1,
 			'default'  => 0,
 			'choices'  => array(
-				0 => get_template_directory_uri() . '/assets/images/2cr.png',
-				1 => get_template_directory_uri() . '/assets/images/2cl.png',
+				0 => get_template_directory_uri() . '/assets/images/1c.png',
+				1 => get_template_directory_uri() . '/assets/images/2cr.png',
+				2 => get_template_directory_uri() . '/assets/images/2cl.png',
 			),
 		);
 
