@@ -37,6 +37,7 @@ class Maera_EDD_Timber {
 		global $content_width, $maera_i18n;
 
 		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+		$data['sidebar']['header'] = Timber::get_widgets( 'header' );
 		return $data;
 
 	}
