@@ -144,8 +144,9 @@ class Maera_EDD {
 		global $edd_options;
 
 		$data['edd_options'] = $edd_options;
-		$data['product_categories'] = Timber::get_terms('download_category');
-		$data['product_tags'] = Timber::get_terms('download_tag');
+
+		$data['download_categories'] = Timber::get_terms( 'download_category' );
+		$data['download_tags']       = Timber::get_terms( 'download_tag' );
 
 		return $data;
 

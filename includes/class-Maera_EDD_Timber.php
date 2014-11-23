@@ -38,6 +38,7 @@ class Maera_EDD_Timber {
 
 		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
 		$data['sidebar']['header'] = Timber::get_widgets( 'header' );
+
 		return $data;
 
 	}

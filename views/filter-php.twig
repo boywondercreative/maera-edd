@@ -3,15 +3,19 @@
 
 	<select name="download_category_dropdown" id="download_category_dropdown" class="postform">
 		<option value="-1">{{ __( 'Choose a category', 'maera_edd' ) }}</option>
-		{% for product_category in product_categories %}
-			<option class="level-0" value="{{ product_category.slug }}">{{ product_category.name }}</option>
+		{% for download_category in download_categories %}
+			<option class="level-0" value="{{ download_category.slug }}"{{ query.download_category == download_category.slug ? ' selected' : '' }}>
+				{{ download_category.name }}
+			</option>
 		{% endfor %}
 	</select>
 
 	<select name="download_tag_dropdown" id="download_tag_dropdown" class="postform">
 		<option value="-1">{{ __( 'Choose a tag', 'maera_edd' ) }}</option>
-		{% for product_tag in product_tags %}
-			<option class="level-0" value="{{ product_tag.slug }}">{{ product_tag.name }}</option>
+		{% for download_tag in download_tags %}
+			<option class="level-0" value="{{ download_tag.slug }}"{{ query.download_tag == download_tag.slug ? ' selected' : '' }}>
+				{{ download_tag.name }}
+			</option>
 		{% endfor %}
 	</select>
 
