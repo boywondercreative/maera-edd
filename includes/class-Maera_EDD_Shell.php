@@ -15,7 +15,8 @@ class Maera_EDD_Shell {
         add_filter( 'maera/section_class/content', array( $this, 'content_class' ) );
         add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
-		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+        add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'edd_scripts' ), 101 );
 
         global $content_width;
         $content_width = ( 0 == get_theme_mod( 'maera_edd_layout', 0 ) && is_active_sidebar( 'sidebar_primary' ) ) ? 1280 : 843;
@@ -100,20 +101,42 @@ class Maera_EDD_Shell {
     function scripts() {
 
 		// Foundation core
-		wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . '/assets/css/foundation.css' );
+		wp_register_style( 'maera_edd_foundation', MAERA_EDD_URL . 'assets/css/foundation.css' );
 		wp_enqueue_style( 'maera_edd_foundation' );
 
 		// Foundation icons
-		wp_register_style( 'maera_edd_foundation_icons', MAERA_EDD_URL . '/assets/foundation-icons/foundation-icons.css' );
+		wp_register_style( 'maera_edd_foundation_icons', MAERA_EDD_URL . 'assets/foundation-icons/foundation-icons.css' );
 		wp_enqueue_style( 'maera_edd_foundation_icons' );
 
 		// Add Foundation required scripts
-		wp_enqueue_script( 'fastclick', MAERA_EDD_URL . '/assets/vendor/fastclick.js', false );
-		wp_enqueue_script( 'foundation', MAERA_EDD_URL . '/assets/foundation.min.js', 'jquery' );
+		wp_enqueue_script( 'fastclick', MAERA_EDD_URL . 'assets/vendor/fastclick.js', false );
+		wp_enqueue_script( 'foundation', MAERA_EDD_URL . 'assets/foundation.min.js', 'jquery' );
 
 		// Remove the default EDD styles
 		wp_dequeue_style( 'edd-styles' );
 
+        if ( is_archive('download') || is_tax('download_tag') || is_tax('download_category') ) {
+            // Register && Enqueue Isotope
+            wp_register_script( 'shoestrap_isotope', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.min.js', false, null, true );
+            wp_enqueue_script( 'shoestrap_isotope' );
+        
+            // Register && Enqueue Isotope-Sloppy-Masonry
+            wp_register_script( 'shoestrap_isotope_sloppy_masonry', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
+            wp_enqueue_script( 'shoestrap_isotope_sloppy_masonry' );
+        }
+    }
+
+    /*
+     * Load our custom scripts
+     */
+    function edd_scripts() {
+        if ( is_archive('download') || is_tax('download_tag') || is_tax('download_category') ) {
+            wp_enqueue_script( 'edd_script', MAERA_EDD_URL . 'assets/scripts.js', false, null, true );
+        }
+        // wp_localize_script( 'maera_edd_script', 'maera_edd_script_vars', array(
+        //
+        //     )
+        // );
     }
 
 }
