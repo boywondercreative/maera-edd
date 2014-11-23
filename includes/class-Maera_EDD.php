@@ -136,11 +136,16 @@ class Maera_EDD {
 
 	}
 
+	/**
+	 * Modify Timber global context
+	 */
 	function timber_global_context( $data ) {
 
 		global $edd_options;
 
 		$data['edd_options'] = $edd_options;
+		$data['product_categories'] = Timber::get_terms('download_category');
+		$data['product_tags'] = Timber::get_terms('download_tag');
 
 		return $data;
 

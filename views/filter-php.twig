@@ -1,2 +1,33 @@
-This is where the PHP filter will go.
-Still under construction.
+{#<?php #}
+<form action="/" method="get">
+
+	<select name="download_category_dropdown" id="download_category_dropdown" class="postform">
+		<option value="-1">{{ __( 'Choose a category', 'maera_edd' ) }}</option>
+		{% for product_category in product_categories %}
+			<option class="level-0" value="{{ product_category.slug }}">{{ product_category.name }}</option>
+		{% endfor %}
+	</select>
+
+	<select name="download_tag_dropdown" id="download_tag_dropdown" class="postform">
+		<option value="-1">{{ __( 'Choose a tag', 'maera_edd' ) }}</option>
+		{% for product_tag in product_tags %}
+			<option class="level-0" value="{{ product_tag.slug }}">{{ product_tag.name }}</option>
+		{% endfor %}
+	</select>
+
+</form>
+
+<script type="text/javascript">
+	<!--
+	var cat_dropdown = document.getElementById("download_category_dropdown");
+	var tag_dropdown = document.getElementById("download_tag_dropdown");
+	function onCatChange() { if ( cat_dropdown.options[cat_dropdown.selectedIndex].value > '' ) {
+			location.href = "{{ site.link }}/?download_category="+cat_dropdown.options[cat_dropdown.selectedIndex].value;
+	}}
+	function onTagChange() { if ( tag_dropdown.options[tag_dropdown.selectedIndex].value > '' ) {
+			location.href = "{{ site.link }}/?download_tag="+tag_dropdown.options[tag_dropdown.selectedIndex].value;
+	}}
+	cat_dropdown.onchange = onCatChange;
+	tag_dropdown.onchange = onTagChange;
+	-->
+</script>
