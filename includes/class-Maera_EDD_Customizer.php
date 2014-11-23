@@ -52,7 +52,7 @@ class Maera_EDD_Customizer {
 			'type'     => 'select',
 			'setting'  => 'checkout_color',
 			'label'    => __( 'Button color', 'maera_edd' ),
-			'subtitle' => __( 'Select the button color for the purchase/buynow button. Please note that this change will be applied after you save the options (no live-preview available).', 'maera_edd' ),
+			'subtitle' => __( 'Select the button color for the purchase/buynow button.', 'maera_edd' ) . ' ' . __( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
 			'section'  => 'maera_edd',
 			'priority' => 12,
 			'default'  => 'primary',
@@ -97,7 +97,7 @@ class Maera_EDD_Customizer {
 			'type'         => 'background',
 			'setting'      => 'hero_bg',
 			'label'        => __( 'Header Background', 'maera_edd' ),
-			'description'  =>   __( 'Background Color', 'maera_edd' ),
+			'description'  => __( 'Background Color', 'maera_edd' ),
 			'section'      => 'maera_edd',
 			'default'      => array(
 				'color'    => '#ffffff',
@@ -110,6 +110,21 @@ class Maera_EDD_Customizer {
 			),
 			'priority' => 30,
 			'output' => '.header.hero',
+		);
+
+		$controls[] = array(
+			'type'     => 'radio',
+			'mode'     => 'buttonset',
+			'setting'  => 'filter_mode',
+			'label'    => __( 'Downloads filter mode', 'textdomain' ),
+			'subtitle' => __( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
+			'section'  => 'maera_edd',
+			'default'  => 'isotope',
+			'priority' => 1,
+			'choices'  => array(
+				'isotope' => __( 'Isotope', 'maera_edd' ),
+				'php'     => __( 'PHP', 'maera_edd' ),
+			),
 		);
 
 		return $controls;
