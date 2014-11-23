@@ -85,6 +85,8 @@ class Maera_EDD_Shortcodes {
 
                     $in_cart         = ( edd_item_in_cart( get_the_ID() ) && ! edd_has_variable_prices( get_the_ID() ) ) ? 'in-cart' : '';
                     $variable_priced = ( edd_has_variable_prices( get_the_ID() ) ) ? 'variable-priced' : '';
+					$hover_type      = get_theme_mod( 'hover_type', 'edd' );
+					$effect          = 'effect-' . $hover_type;
 
                     $context = Timber::get_context();
                     $context['post']             = new TimberPost( get_the_ID() );
@@ -97,19 +99,16 @@ class Maera_EDD_Shortcodes {
                     $context['column_class']     = $column_class;
                     $context['count_class']      = $count_class;
                     $context['count']            = $count;
-                    $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
+                    $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count, $effect );
                     $context['btn_class']        = $button_defaults_class;
 
-                    if ( $columns == 1 || get_theme_mod('hover_type', 'edd') == 'edd' ) {
-
-                        Timber::render( array( 'shortcode-download-content.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
-
-                    } elseif ( get_theme_mod('hover_type', 'edd') == 'zoe' ) {
-
-                        $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count, 'effect-zoe' );
-
-                        Timber::render( array( 'shortcode-download-content-zoe.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
-                    }
+					if ( 1 == $columns ) {
+						$mode = 'list';
+					} else {
+						$mode = $hover_type;
+						$mode = ( 'edd' == $hover_type ) ? 'grid' : $mode;
+					}
+                    Timber::render( array( 'shortcode-download-content-' . $mode . '.twig', ), $context, apply_filters( 'maera/timber/cache', false ) );
 
                 endwhile;
 
