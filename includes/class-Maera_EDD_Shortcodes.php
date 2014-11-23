@@ -74,7 +74,7 @@ class Maera_EDD_Shortcodes {
 
         $list_class = 1 == $columns ? 'list' : 'grid';
         ?>
-        <div class="downloads-list row <?php echo $list_class; ?>">
+        <div class="downloads-list <?php echo $list_class; ?>">
             [maera_grid_row_open]
                 <?php
 
