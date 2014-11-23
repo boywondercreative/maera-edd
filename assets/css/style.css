@@ -789,3 +789,8 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   -webkit-transition-delay: 0.2s;
   transition-delay: 0.2s;
 }
+
+form.edd-filters-form {
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 1rem !important;
+}
