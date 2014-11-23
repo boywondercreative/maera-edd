@@ -16,7 +16,6 @@ class Maera_EDD_Shell {
         add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
         add_action( 'widgets_init', array( $this, 'widgets_init' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'edd_scripts' ), 101 );
 
         global $content_width;
         $content_width = ( 0 == get_theme_mod( 'maera_edd_layout', 0 ) && is_active_sidebar( 'sidebar_primary' ) ) ? 1280 : 843;
@@ -45,7 +44,7 @@ class Maera_EDD_Shell {
      * depending on whether the primary sidebar has any widgets in it or not.
      */
     function wrapper_class( $classes ) {
-        return ( is_active_sidebar( 'sidebar_primary' ) ) ? $classes . ' row' : $classes;
+        return $classes . ' row';
     }
 
     /**
@@ -73,8 +72,8 @@ class Maera_EDD_Shell {
 
 
 	/**
-	* Register sidebars
-	*/
+	 * Register sidebars
+	 */
 	function widgets_init() {
 
 		$class        = apply_filters( 'maera/widgets/class', '' );
@@ -83,7 +82,7 @@ class Maera_EDD_Shell {
 
 		register_sidebar( array(
 			'name'          => __( 'Header', 'maera_edd' ),
-			'id'            => 'sidebar_header',
+			'id'            => 'header',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title"',
@@ -115,28 +114,22 @@ class Maera_EDD_Shell {
 		// Remove the default EDD styles
 		wp_dequeue_style( 'edd-styles' );
 
-        if ( is_archive('download') || is_tax('download_tag') || is_tax('download_category') ) {
+        if ( 'isotope' == get_theme_mod( 'filter_mode', 'isotope' ) && ( is_archive( 'download' ) || is_tax('download_tag') || is_tax( 'download_category' ) ) ) {
             // Register && Enqueue Isotope
-            wp_register_script( 'shoestrap_isotope', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.min.js', false, null, true );
-            wp_enqueue_script( 'shoestrap_isotope' );
-        
-            // Register && Enqueue Isotope-Sloppy-Masonry
-            wp_register_script( 'shoestrap_isotope_sloppy_masonry', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
-            wp_enqueue_script( 'shoestrap_isotope_sloppy_masonry' );
-        }
-    }
+            wp_register_script( 'maera_isotope', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.min.js', false, null, true );
+            wp_enqueue_script( 'maera_isotope' );
 
-    /*
-     * Load our custom scripts
-     */
-    function edd_scripts() {
-        if ( is_archive('download') || is_tax('download_tag') || is_tax('download_category') ) {
-            wp_enqueue_script( 'edd_script', MAERA_EDD_URL . 'assets/scripts.js', false, null, true );
+            // Register && Enqueue Isotope-Sloppy-Masonry
+            wp_register_script( 'maera_isotope_sloppy_masonry', MAERA_EDD_URL . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
+            wp_enqueue_script( 'maera_isotope_sloppy_masonry' );
+
+			wp_enqueue_script( 'edd_script', MAERA_EDD_URL . 'assets/scripts.js', false, null, true );
+			// wp_localize_script( 'maera_edd_script', 'maera_edd_script_vars', array(
+			//
+			//     )
+			// );
         }
-        // wp_localize_script( 'maera_edd_script', 'maera_edd_script_vars', array(
-        //
-        //     )
-        // );
+
     }
 
 }
