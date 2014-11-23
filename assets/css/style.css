@@ -270,20 +270,20 @@ input[type="submit"].edd-submit:focus,
 }
 
 /** Gray (Default) */
-.edd-submit.button,
-.edd-submit.button:visited,
-.edd-submit.button.gray {
+.button,
+.button:visited,
+.button.gray {
   color: #333333;
   background: #f0f0f0;
   border-color: #cccccc;
 }
 
-.edd-submit.button:hover,
-.edd-submit.button:focus,
-.edd-submit.button:active,
-.edd-submit.button.gray:hover,
-.edd-submit.button.gray:focus,
-.edd-submit.button.gray:active,
+.button:hover,
+.button:focus,
+.button:active,
+.button.gray:hover,
+.button.gray:focus,
+.button.gray:active,
 .top-bar-section ul li > a.button:hover,
 .top-bar-section ul li > a.button:focus,
 .top-bar-section ul li > a.button:active,
@@ -295,7 +295,7 @@ input[type="submit"].edd-submit:focus,
   border-color: #adadad;
 }
 
-.edd-submit.button.gray:active,
+.button.gray:active,
 .top-bar-section ul li > a.button.gray:active {
   background-image: none;
 }
