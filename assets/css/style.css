@@ -794,3 +794,11 @@ form.edd-filters-form {
   border-bottom: 1px dotted #ccc;
   margin-bottom: 1rem !important;
 }
+
+.downloads-list.grid .edd_coming_soon .featured-image-wrapper .edd_download_buy_button {
+  opacity: .5;
+  background: rgba(255,255,255,.65);
+}
+.downloads-list.grid .edd_coming_soon .featured-image-wrapper:hover .edd_download_buy_button {
+  opacity: 1;
+}

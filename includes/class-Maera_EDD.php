@@ -31,11 +31,34 @@ class Maera_EDD {
 		add_filter( 'timber_context', array( $this, 'timber_global_context' ) );
 		add_action( 'wp', array( $this, 'checkout_no_sidebars' ) );
 		add_filter( 'template_include', array( $this, 'templates' ), 99 );
+		add_filter( 'post_class', array( $this, 'post_class' ) );
+		add_filter( 'body_class', array( $this, 'post_class' ) );
 
 		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
 			remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
 			add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
 		}
+
+	}
+
+	/**
+	 * Add extra post classes if needed
+	 */
+	function post_class( $classes ) {
+
+		global $post;
+
+		// Add coming-soon classes
+		if ( defined( 'EDD_COMING_SOON' ) ) {
+
+			$coming_soon = get_post_meta( $post->ID, 'edd_coming_soon', true );
+			if ( $coming_soon ) {
+				$classes[] = 'edd_coming_soon';
+			}
+
+		}
+
+		return $classes;
 
 	}
 
