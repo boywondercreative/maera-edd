@@ -771,7 +771,6 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
 }
 
 form.edd-filters-form {
-  border-bottom: 1px dotted #ccc;
   margin-bottom: 1rem !important;
 }
 
