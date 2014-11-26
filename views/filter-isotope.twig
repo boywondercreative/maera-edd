@@ -3,35 +3,34 @@
 
 <div id="isotope-filter">
 
+	<div class="{{ button_group_classes() }}" id="isotope-categories">
+		<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter="*">
+			{{ __( 'All', 'maera_edd' ) }}
+		</a>
+		{% for download_category in download_categories %}
+			{% if download_category.get_posts %}
+				<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter=".edd-download-cat-{{ download_category.slug }}">
+					{{ download_category.name }}
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+	<div class="{{ button_group_classes() }}" id="isotope-tags">
+		{% for download_tag in download_tags %}
+			{% if download_tag.get_posts %}
+				<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter=".edd-download-tag-{{ download_tag.slug }}">
+					{{ download_tag.name }}
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+
 	<div id="isotope-sort">
 		<h5 class="secondary label">{{ __( 'Sort by:', 'maera_edd' ) }}</h5>
 		<a class="active"  data-sort-by="title-def">{{ __( 'Default', 'maera_edd' ) }} <i class="fi-minus"></i></a>
 		<a data-sort-by="title-asc">{{ __( 'Title', 'maera_edd' ) }} <i class="fi-arrow-up"></i></a>
 		<a data-sort-by="title-dsc">{{ __( 'Title', 'maera_edd' ) }} <i class="fi-arrow-down"></i></a>
-	</div>
-
-	<div class="{{ button_group_classes() }}" id="isotope-categories">
-		<h5 class="secondary label">{{ __( 'Filter by category:', 'maera_edd' ) }}</h5>
-		<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter="*">
-			{{ __( 'All', 'maera_edd' ) }}
-		</a>
-		{% for download_category in download_categories %}
-			<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter=".edd-download-cat-{{ download_category.slug }}">
-				{{ download_category.name }}
-			</a>
-		{% endfor %}
-	</div>
-
-	<div class="{{ button_group_classes() }}" id="isotope-tags">
-		<h5 class="secondary label">{{ __( 'Filter by tag:', 'maera_edd' ) }}</h5>
-		<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter="*">
-			{{ __( 'All', 'maera_edd' ) }}
-		</a>
-		{% for download_tag in download_tags %}
-			<a class="{{ button_classes( 'default', 'extra-small', null, null ) }}" data-filter=".edd-download-tag-{{ download_tag.slug }}">
-				{{ download_tag.name }}
-			</a>
-		{% endfor %}
 	</div>
 
 </div>
