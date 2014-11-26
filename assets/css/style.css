@@ -719,21 +719,6 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   margin-top: -10px;
 }
 
-.effect-zoe div[itemprop="description"] {
-  width: 90%;
-  position: absolute;
-  top: -7em;
-  padding: 0;
-  color: #333;
-  text-transform: none;
-  font-size: 80%;
-  opacity: 0;
-  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
-  -webkit-transition: opacity 0.35s;
-  transition: opacity 0.35s;
-  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
-}
-
 .effect-zoe h5,
 .effect-zoe p.icon-links a {
   -webkit-transition: -webkit-transform 0.35s;
@@ -756,7 +741,6 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   display: inline-block;
 }
 
-.effect-zoe:hover div[itemprop="description"],
 .effect-zoe:hover img {
   opacity: 1;
 }
