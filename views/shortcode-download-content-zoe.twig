@@ -16,9 +16,11 @@
 				</a>
 			{% else %}
 				{% if variable_priced %}
-					<a class="[maera_button_default_small] {{ theme_mods.checkout_color }} radius" title="{{ __( 'Details', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ __('Details', 'maera_edd') }}</a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'Choose options for ', '	maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-check"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
 				{% else %}
-					{{ function('edd_get_purchase_link', [{'id':post.ID}]) }}
+					<a title="{{ __( 'Add to cart', 'maera_edd' ) }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="fi fi-shopping-cart"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
 				{% endif %}
 			{% endif %}
 		</p>

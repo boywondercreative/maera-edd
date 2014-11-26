@@ -19,16 +19,32 @@ $j(window).load(function(){
   });
 
   // sort items on button click
-  $j('#isotope-sort button').click(function() {
+  $j('#isotope-sort a').click(function() {
+    $j('#isotope-sort a').removeClass('active');
+    $j(this).addClass('active'); 
+    
     var sortByValue = $j(this).attr('data-sort-by');
     
     if (sortByValue == 'title-asc') {
       $container.isotope({ sortBy: 'title', sortAscending: true }); 
+
     }
     if (sortByValue == 'title-dsc') {
       $container.isotope({ sortBy: 'title', sortAscending: false });  
     }
-    
+    if (sortByValue == 'title-def') {
+      $container.isotope({ sortBy : "original-order" });
+    }
+  });
+
+  // filter items when filter link is clicked
+  $j('#isotope-categories a, #isotope-tags a').click(function(){
+    $j('#isotope-categories a, #isotope-tags a').removeClass('active');
+    $j(this).addClass('active'); 
+
+    var selector = $j(this).attr('data-filter');
+    $container.isotope({ filter: selector });
+    return false;
   });
 
 });

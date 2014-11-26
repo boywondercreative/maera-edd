@@ -6,7 +6,7 @@
 
 		{% include ['filter-'~theme_mods.filter_mode~'.twig', 'filter-php.twig'] %}
 
-		<article {{ function( 'post_class' ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
+		<article {{ function( 'post_class', in_cart, variable_priced, categories, tags ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 
 			{% include 'single-title.twig' %}
 
