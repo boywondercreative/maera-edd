@@ -26,6 +26,11 @@ class Maera_EDD_Shell {
 			add_filter( 'maera/sidebar/primary', '__return_false' );
 		}
 
+        add_theme_support( 'infinite-scroll', array(
+            'container' => 'content',
+            'footer' => false,
+        ) );
+        
     }
 
     /**
