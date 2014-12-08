@@ -30,7 +30,26 @@ class Maera_EDD_Shell {
             'container' => 'content',
             'footer' => false,
         ) );
-        
+
+        // Add theme support for Custom Header
+        $header_args = array(
+            'default-image'          => '',
+            'width'                  => 0,
+            'height'                 => 0,
+            'flex-width'             => true,
+            'flex-height'            => true,
+            'uploads'                => true,
+            'random-default'         => true,
+            'header-text'            => true,
+            'default-text-color'     => '#333333',
+            'wp-head-callback'       => '',
+            'admin-head-callback'    => '',
+            'admin-preview-callback' => '',
+        );
+        add_theme_support( 'custom-header', $header_args );
+
+        add_filter( 'maera/styles', array( $this, 'custom_header_css' ) );
+
     }
 
     /**
@@ -147,6 +166,19 @@ class Maera_EDD_Shell {
 			//     )
 			// );
         }
+
+    }
+
+    function custom_header_css( $styles ) {
+
+        $custom_header = get_header_image();
+
+        if ( $custom_header ) {
+            $styles .= '.header.hero{background-image:url("' . $custom_header . '");}';
+        }
+        $styles .= '.header.hero{color:#' . get_theme_mod( 'header_textcolor', '333333' ) . '}';
+
+        return $styles;
 
     }
 

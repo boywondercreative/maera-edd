@@ -20,12 +20,17 @@ class Maera_EDD_Customizer {
 	 */
 	function create_section( $wp_customize ) {
 
+		$wp_customize->add_section( 'layout', array(
+			'title'    => __( 'Layout', 'maera_edd' ),
+			'priority' => 999,
+		) );
+
 		$wp_customize->add_section( 'maera_edd', array(
 			'title'    => __( 'Easy Digital Downloads', 'maera_edd' ),
 			'priority' => 999,
 		) );
 
-	}
+		}
 
 	/**
 	 * Create the customizer controls.
@@ -36,9 +41,9 @@ class Maera_EDD_Customizer {
 		$controls[] = array(
 			'type'     => 'radio',
 			'mode'     => 'image',
-			'setting'  => 'maera_edd_layout',
+			'setting'  => 'layout',
 			'label'    => __( 'Layout', 'maera_edd' ),
-			'section'  => 'maera_edd',
+			'section'  => 'layout',
 			'priority' => 1,
 			'default'  => 0,
 			'choices'  => array(
@@ -53,7 +58,7 @@ class Maera_EDD_Customizer {
 			'setting'  => 'checkout_color',
 			'label'    => __( 'Button color', 'maera_edd' ),
 			'subtitle' => __( 'Select the button color for the purchase/buynow button.', 'maera_edd' ) . ' ' . __( 'Please note that this change will be applied after you save the options and refresh (no live-preview available).', 'maera_edd' ),
-			'section'  => 'maera_edd',
+			'section'  => 'colors',
 			'priority' => 12,
 			'default'  => 'primary',
 			'choices'  => array(
@@ -91,25 +96,6 @@ class Maera_EDD_Customizer {
 			'section'  => 'maera_edd',
 			'default'  => 0,
 			'priority' => 20,
-		);
-
-		$controls[] = array(
-			'type'         => 'background',
-			'setting'      => 'hero_bg',
-			'label'        => __( 'Header Background', 'maera_edd' ),
-			'description'  => __( 'Background Color', 'maera_edd' ),
-			'section'      => 'maera_edd',
-			'default'      => array(
-				'color'    => '#ffffff',
-				'image'    => null,
-				'repeat'   => 'repeat',
-				'size'     => 'inherit',
-				'attach'   => 'inherit',
-				'position' => 'left-top',
-				'opacity'  => 100,
-			),
-			'priority' => 30,
-			'output' => '.header.hero',
 		);
 
 		$controls[] = array(

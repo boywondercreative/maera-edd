@@ -927,3 +927,8 @@ form.edd-filters-form {
 .top-bar #nav-toggle span::after {
   width: 1.8125rem
 }
+
+.header.hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
