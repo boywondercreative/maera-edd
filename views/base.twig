@@ -12,9 +12,11 @@
 	{% do action( 'get_header' ) %}
 
 	{% do action( 'maera/header/before', post.ID ) %}
+{% if menu.offcanvas %}
 	<div class="off-canvas-wrap" data-offcanvas>
 		<div class="inner-wrap">
-			<a id="nav-toggle" class="left-off-canvas-toggle" href="#" ><span></span></a>
+			{% if not menu.primary %}<a id="nav-toggle" class="left-off-canvas-toggle" href="#" ><span></span></a>{% endif %}
+{% endif %}
 			{% include 'header.twig' %}
 			{% do action( 'maera/header/after', post.ID ) %}
 			{% include 'main-header.twig' %}
@@ -68,7 +70,9 @@
 				{% do action( 'maera/footer/end', post.ID ) %}
 			</footer>
 			{% do action( 'maera/footer/after', post.ID ) %}
+{% if menu.offcanvas %}
 			<a class="exit-off-canvas"></a>
+{% endif %}
 		</div>
 	</div>
 	{{ function( 'wp_footer' ) }}

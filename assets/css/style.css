@@ -914,3 +914,16 @@ form.edd-filters-form {
 .inner-wrap {
   min-height: 100vh;
 }
+
+.top-bar #nav-toggle {
+  background: none;
+  padding: .5rem;
+  left: 0;
+  top: .7rem;
+}
+
+.top-bar #nav-toggle span,
+.top-bar #nav-toggle span::before,
+.top-bar #nav-toggle span::after {
+  width: 1.8125rem
+}

@@ -1,7 +1,13 @@
-<aside class="left-off-canvas-menu">
-    <ul class="title-area">
-        <li class="name"><h1><a href="{{ site.link }}">{{ site.name }}</a></h1></li>
-        {% include 'primary-menu.twig' %}
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-    </ul>
-</aside>
+{% if menu.primary %}
+    {% if menu.offcanvas %}
+        {% include 'menu-primary-offcanvas.twig' %}
+    {% else %}
+        {% include 'menu-primary.twig' %}
+    {% endif %}
+{% endif %}
+
+{% if menu.offcanvas %}
+    {% include 'menu-offcanvas.twig' %}
+{% endif %}
+
+{% include 'main-header.twig' %}
