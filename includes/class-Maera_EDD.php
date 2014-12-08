@@ -167,6 +167,7 @@ class Maera_EDD {
 		global $edd_options;
 
 		$data['edd_options'] = $edd_options;
+		$data['menu']['offcanvas'] = has_nav_menu( 'offcanvas' ) ? new TimberMenu( 'offcanvas' ) : null;
 
 		$data['download_categories'] = Timber::get_terms( 'download_category' );
 		$data['download_tags']       = Timber::get_terms( 'download_tag' );

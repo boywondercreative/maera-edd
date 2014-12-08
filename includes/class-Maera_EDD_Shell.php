@@ -16,6 +16,7 @@ class Maera_EDD_Shell {
         add_filter( 'maera/section_class/primary', array( $this, 'sidebar_class' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ) );
         add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+        add_action( 'after_setup_theme', array( $this, 'setup' ) );
 
         global $content_width;
         $content_width = ( 0 == get_theme_mod( 'maera_edd_layout', 0 ) && is_active_sidebar( 'sidebar_primary' ) ) ? 1280 : 843;
@@ -93,6 +94,18 @@ class Maera_EDD_Shell {
 		unregister_sidebar( 'sidebar_secondary' );
 
 	}
+
+    /**
+    * Maera initial setup and constants
+    */
+    function setup() {
+
+        // Register wp_nav_menu() menu ( http://codex.wordpress.org/Function_Reference/register_nav_menus )
+        register_nav_menus( array(
+            'offcanvas' => __( 'Off-Canvas', 'maera_edd' )
+        ) );
+
+    }
 
     /**
      * Enqueue styles and scripts
