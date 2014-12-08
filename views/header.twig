@@ -1,12 +1,7 @@
-<nav class="top-bar" data-topbar role="navigation">
+<aside class="left-off-canvas-menu">
     <ul class="title-area">
-        <li class="name">
-            <h1><a href="{{ site.link }}">{{ site.name }}</a></h1>
-        </li>
+        <li class="name"><h1><a href="{{ site.link }}">{{ site.name }}</a></h1></li>
+        {% include 'primary-menu.twig' %}
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-    <section class="top-bar-section">
-		{% include 'primary-menu.twig' %}
-    </section>
-</nav>
-{% include 'main-header.twig' %}
+</aside>

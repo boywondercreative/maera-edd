@@ -869,3 +869,41 @@ form.edd-filters-form {
 #isotope-sort a.active i {
   font-size: 18px;
 }
+#nav-toggle { position: absolute; left: 0; top: 0; }
+
+#nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #333;
+  position: absolute;
+  display: block;
+  content: '';
+}
+#nav-toggle span:before {
+  top: -10px;
+}
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  transition: all 500ms ease-in-out;
+}
+.move-right #nav-toggle span {
+  background-color: transparent;
+}
+.move-right #nav-toggle span:before, .move-right #nav-toggle span:after {
+  top: 0;
+}
+.move-right #nav-toggle span:before {
+  transform: rotate(45deg);
+}
+.move-right #nav-toggle span:after {
+  transform: rotate(-45deg);
+}
+html.js {
+  margin-top: 0 !important;
+}
