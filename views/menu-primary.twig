@@ -7,11 +7,11 @@
 		<ul class="left">
 			{% for item in menu.primary.items %}
 				{% if item.get_children %}
-					<li id="menu-item-{{item.ID}}" class="has-dropdown menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}"><a href="{{ item.get_path }}">{{ item.title }} <b class="caret"></b></a>
+					<li id="menu-item-{{item.ID}}" class="has-dropdown menu-item menu-item-type-{{item.type}} menu-item-object-{{item.object}} menu-item-{{item.ID}}"><a href="#">{{ item.title }} <b class="caret"></b></a>
 						<ul class="dropdown">
 							{% for child in item.get_children %}
 								{% if child.get_children %}
-									<li id="menu-item-{{child.ID}}" class="has-dropdown menu-item menu-item-type-{{child.type}} menu-item-object-{{child.object}} menu-item-{{child.ID}}"><a href="{{ child.get_path }}">{{ child.title }} <b class="caret"></b></a>
+									<li id="menu-item-{{child.ID}}" class="has-dropdown menu-item menu-item-type-{{child.type}} menu-item-object-{{child.object}} menu-item-{{child.ID}}"><a href="#">{{ child.title }} <b class="caret"></b></a>
 										<ul class="dropdown">
 											{% for grant_child in child.get_children %}
 												<li id="menu-item-{{grant_child.ID}}" class="menu-item menu-item-type-{{grant_child.type}} menu-item-object-{{grant_child.object}} menu-item-{{grant_child.ID}}">
