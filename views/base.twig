@@ -18,8 +18,8 @@
 			{% if not menu.primary %}<a id="nav-toggle" class="left-off-canvas-toggle" href="#" ><span></span></a>{% endif %}
 {% endif %}
 			{% include 'header.twig' %}
-			{% do action( 'maera/header/after', post.ID ) %}
 			{% include 'main-header.twig' %}
+			{% do action( 'maera/header/after', post.ID ) %}
 			{% do action( 'maera/wrap/before', post.ID ) %}
 
 			{{ container_open( 'div', 'wrap-main-section', 'wrap main-section' ) }}
