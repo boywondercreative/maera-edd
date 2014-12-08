@@ -68,9 +68,9 @@
 				{% do action( 'maera/footer/end', post.ID ) %}
 			</footer>
 			{% do action( 'maera/footer/after', post.ID ) %}
-			{{ function( 'wp_footer' ) }}
 			<a class="exit-off-canvas"></a>
 		</div>
 	</div>
+	{{ function( 'wp_footer' ) }}
 </body>
 </html>
