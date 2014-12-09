@@ -6,19 +6,26 @@
 class Maera_EDD_Timber {
 
 	function __construct() {
-		add_filter( 'edd_template_paths',     array( $this, 'templates_path' ) );
+
 		add_filter( 'maera/timber/locations', array( $this, 'twigs_location' ), 1 );
 		add_filter( 'timber_context',         array( $this, 'timber_global_context' ) );
+
 	}
+
 	/**
-	 * Add the /templates folder for our custom templates
+	 * Modify Timber global context
 	 */
-	function templates_path( $file_paths ) {
+	function timber_global_context( $data ) {
 
-		$file_paths[50] = MAERA_EDD_PATH . '/templates';
-		ksort( $file_paths, SORT_NUMERIC );
+		global $edd_options;
+		$data['edd_options'] = $edd_options;
 
-		return $file_paths;
+		$data['download_categories'] = Timber::get_terms( 'download_category' );
+		$data['download_tags']       = Timber::get_terms( 'download_tag' );
+
+		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
+
+		return $data;
 
 	}
 
@@ -29,15 +36,6 @@ class Maera_EDD_Timber {
 
 		$locations[] = MAERA_EDD_PATH . '/views';
 		return $locations;
-
-	}
-
-	function timber_global_context( $data ) {
-
-		$data['default_image'] = new TimberImage( MAERA_EDD_URL . '/assets/images/default.png' );
-		$data['sidebar']['header'] = Timber::get_widgets( 'header' );
-
-		return $data;
 
 	}
 

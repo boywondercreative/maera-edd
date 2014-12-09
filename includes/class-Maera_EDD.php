@@ -22,42 +22,12 @@ class Maera_EDD {
 	private function __construct() {
 
 		$this->requires();
-		$maera_edd_timber     = new Maera_EDD_Timber();
-		$maera_edd_customizer = new Maera_EDD_Customizer();
-		$maera_edd_shortcodes = new Maera_EDD_Shortcodes();
-
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
-		add_filter( 'edd_purchase_link_defaults', array( $this, 'add_button_class' ) );
-		add_action( 'wp', array( $this, 'checkout_no_sidebars' ) );
-		add_filter( 'template_include', array( $this, 'templates' ), 99 );
-		add_filter( 'post_class', array( $this, 'post_class' ) );
-		add_filter( 'body_class', array( $this, 'post_class' ) );
-
-		if ( 1 == get_theme_mod( 'edd_variables_dropdown', 0 ) ) {
-			remove_action( 'edd_purchase_link_top', 'edd_purchase_variable_pricing', 10, 1 );
-			add_action( 'edd_purchase_link_top', array( $this, 'purchase_variable_pricing' ), 10, 1 );
-		}
-
-	}
-
-	/**
-	 * Add extra post classes if needed
-	 */
-	function post_class( $classes ) {
-
-		global $post;
-
-		// Add coming-soon classes
-		if ( defined( 'EDD_COMING_SOON' ) ) {
-
-			$coming_soon = get_post_meta( $post->ID, 'edd_coming_soon', true );
-			if ( $coming_soon ) {
-				$classes[] = 'edd_coming_soon';
-			}
-
-		}
-
-		return $classes;
+		$maera_edd_timber        = new Maera_EDD_Timber();
+		$maera_edd_customizer    = new Maera_EDD_Customizer();
+		$maera_edd_shortcodes    = new Maera_EDD_Shortcodes();
+		$maera_edd_scripts       = new Maera_EDD_Scripts();
+		$maera_edd_mods          = new Maera_EDD_Mods();
+		$maera_edd_compatibility = new Maera_EDD_Compatibility();
 
 	}
 
@@ -71,142 +41,9 @@ class Maera_EDD {
 		require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
 		require_once( __DIR__ . '/widgets.php');
 		require_once( __DIR__ . '/class-Maera_EDD_Shortcodes.php');
-
-	}
-
-	function checkout_no_sidebars() {
-
-		if ( edd_is_checkout() ) {
-			add_filter( 'maera/sidebar/primary', '__return_false' );
-			add_filter( 'maera/sidebar/secondary', '__return_false' );
-		}
-
-	}
-
-	function templates( $template ) {
-
-		if ( is_post_type_archive( 'download' ) || is_tax( 'download_category' ) || is_tax( 'download_tag' ) ) {
-			$new_template = MAERA_EDD_PATH . '/templates/archive-download.php';
-			if ( '' != $new_template ) {
-				return $new_template;
-			}
-
-		}
-
-		return $template;
-	}
-
-	/**
-	 * Add our custom stylesheet
-	 */
-	function scripts() {
-
-		$options = get_option( 'maera_admin_options', array() );
-		$active_shell = ( isset( $options['shell'] ) ) ? $options['shell'] : 'core';
-
-		// Remove the default EDD styles
-		wp_dequeue_style( 'edd-styles' );
-
-		// If EDD-Software-Specs is installed, remove its styles
-		if ( class_exists( 'EDD_Software_Specs' ) ) {
-			wp_dequeue_style( 'edd-software-specs' );
-			wp_deregister_style( 'edd-software-specs' );
-		}
-
-		// Add our custom styles
-		wp_register_style( 'maera-edd', trailingslashit( MAERA_EDD_URL ) . 'assets/css/style.css' );
-		wp_enqueue_style( 'maera-edd' );
-
-		if ( 'isotope' == get_theme_mod( 'filter_mode', 'isotope' ) && ( is_archive( 'download' ) || is_tax('download_tag') || is_tax( 'download_category' ) ) ) {
-			// Register && Enqueue Isotope
-			wp_register_script( 'maera_isotope', MAERA_FOUNDATION_SHELL_URL . 'assets/vendor/jquery.isotope.min.js', false, null, true );
-			wp_enqueue_script( 'maera_isotope' );
-
-			// Register && Enqueue Isotope-Sloppy-Masonry
-			wp_register_script( 'maera_isotope_sloppy_masonry', MAERA_FOUNDATION_SHELL_URL . 'assets/vendor/jquery.isotope.sloppy-masonry.min.js', false, null, true );
-			wp_enqueue_script( 'maera_isotope_sloppy_masonry' );
-
-			wp_enqueue_script( 'edd_script', MAERA_FOUNDATION_SHELL_URL . 'assets/scripts.js', false, null, true );
-			// wp_localize_script( 'maera_foundation_script', 'maera_foundation_script_vars', array(
-			//
-			//     )
-			// );
-		}
-
-	}
-
-	/*
-	 * Convert variable prices from radio buttons to a dropdown
-	 */
-	function purchase_variable_pricing( $download_id ) {
-
-		$variable_pricing = edd_has_variable_prices( $download_id );
-
-		if ( ! $variable_pricing ) {
-			return;
-		}
-
-		$prices = apply_filters( 'edd_purchase_variable_prices', edd_get_variable_prices( $download_id ), $download_id );
-
-		$type   = edd_single_price_option_mode( $download_id ) ? 'checkbox' : 'radio';
-
-		do_action( 'edd_before_price_options', $download_id );
-
-		echo '<div class="edd_price_options">';
-			if ( $prices ) {
-				echo '<select name="edd_options[price_id][]">';
-				foreach ( $prices as $key => $price ) {
-					printf(
-						'<option for="%3$s" name="edd_options[price_id][]" id="%3$s" class="%4$s" value="%5$s" %7$s> %6$s</option>',
-						checked( 0, $key, false ),
-						$type,
-						esc_attr( 'edd_price_option_' . $download_id . '_' . $key ),
-						esc_attr( 'edd_price_option_' . $download_id ),
-						esc_attr( $key ),
-						esc_html( $price['name'] . ' - ' . edd_currency_filter( edd_format_amount( $price[ 'amount' ] ) ) ),
-						selected( isset( $_GET['price_option'] ), $key, false )
-					);
-					do_action( 'edd_after_price_option', $key, $price, $download_id );
-				}
-				echo '</select>';
-			}
-			do_action( 'edd_after_price_options_list', $download_id, $prices, $type );
-
-		echo '</div><!--end .edd_price_options-->';
-		do_action( 'edd_after_price_options', $download_id );
-
-	}
-
-	/**
-	 * Modify Timber global context
-	 */
-	function timber_global_context( $data ) {
-
-		global $edd_options;
-
-		$data['edd_options'] = $edd_options;
-		$data['menu']['offcanvas'] = has_nav_menu( 'offcanvas' ) ? new TimberMenu( 'offcanvas' ) : null;
-
-		$data['download_categories'] = Timber::get_terms( 'download_category' );
-		$data['download_tags']       = Timber::get_terms( 'download_tag' );
-
-		return $data;
-
-	}
-
-	/**
-	 * Add the shell button classes to EDD buttons
-	 */
-	function add_button_class( $defaults ) {
-
-		if ( ! is_singular( 'download' ) ) {
-			$size = 'small';
-		} else {
-			$size = 'extra_large';
-		}
-
-		$defaults['class'] =  $size . ' radius';
-		return $defaults;
+		require_once( __DIR__ . '/class-Maera_EDD_Scripts.php');
+		require_once( __DIR__ . '/class-Maera_EDD_Mods.php');
+		require_once( __DIR__ . '/class-Maera_EDD_Compatibility.php');
 
 	}
 
