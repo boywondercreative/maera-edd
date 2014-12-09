@@ -37,7 +37,7 @@ class Maera_EDD {
 	function requires() {
 
 		require_once( __DIR__ . '/class-Maera_EDD_Timber.php');
-		require_once( __DIR__ . '/class-Maera_EDD_Tonesque.php');
+		// require_once( __DIR__ . '/class-Maera_EDD_Tonesque.php');
 		require_once( __DIR__ . '/class-Maera_EDD_Customizer.php');
 		require_once( __DIR__ . '/widgets.php');
 		require_once( __DIR__ . '/class-Maera_EDD_Shortcodes.php');

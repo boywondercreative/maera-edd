@@ -1,3 +1,8 @@
+{% from 'panel_open.html.twig' import panel_open as panel_open %}
+{% from 'panel_close.html.twig' import panel_close as panel_close %}
+{% from 'panel_heading_open.html.twig' import panel_heading_open as panel_heading_open %}
+{% from 'panel_heading_close.html.twig' import panel_heading_close as panel_heading_close %}
+
 {% set width  = content_width // columns %}
 {% set height = width // 1.618 %}
 
@@ -26,14 +31,16 @@
 		</a>
 	{% if display_buy_btn == 'yes' %}</div>{% endif %}
 	{# Only add the "panel" class if we're on a grid #}
-	<div class="panel content">
+	{{ panel_open('content') }}
 		{# The title of the download #}
-		<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><h5 class="title clearfix">{{ post.title }}</h5></a>
+		{{ panel_heading_open() }}
+			<a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ post.title }}</a>
+		{{ panel_heading_close() }}
 		{# Excerpt and Content #}
 		{% if display_excerpt == 'yes' %}
 			{{ post.get_preview(20|apply_filters(excerpt_length)) }}
 		{% elseif display_full == 'yes' %}
 			{{ post.content }}
 		{% endif %}
-	</div>
+	{{ panel_close() }}
 </div>
