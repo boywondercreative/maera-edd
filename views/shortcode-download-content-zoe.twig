@@ -16,11 +16,11 @@
 				</a>
 			{% else %}
 				{% if variable_priced %}
-					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'Choose options for ', '	maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-list-thumbnails"></span></a>
-					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'Choose options for ', '	maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-screenoptions"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-visibility"></span></a>
 				{% else %}
-					<a title="{{ __( 'Add to cart', 'maera_edd' ) }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="fi fi-shopping-cart"></span></a>
-					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="fi fi-eye"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'Add to cart', 'maera_edd' ) }}" href="{{ site.link }}?edd_action=add_to_cart&download_id={{ post.ID }}"><span class="dashicons dashicons-cart"></span></a>
+					<a class="{{ theme_mods.checkout_color }}" title="{{ __( 'More details on ', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}"><span class="dashicons dashicons-visibility"></span></a>
 				{% endif %}
 			{% endif %}
 		</p>
