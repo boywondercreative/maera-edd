@@ -34,12 +34,12 @@ class Maera_EDD_Mods {
 	function add_button_class( $defaults ) {
 
 		if ( ! is_singular( 'download' ) ) {
-			$size = 'small';
+			$class = '[maera_button_default_small]';
 		} else {
-			$size = 'extra_large';
+			$class = '[maera_button_default_extra_large]';
 		}
 
-		$defaults['class'] =  $size . ' radius';
+		$defaults['class'] = $class . ' radius';
 		return $defaults;
 
 	}
@@ -47,6 +47,7 @@ class Maera_EDD_Mods {
 	function checkout_no_sidebars() {
 
 		if ( edd_is_checkout() ) {
+			// TODO: force fluid layout
 			add_filter( 'maera/sidebar/primary', '__return_false' );
 			add_filter( 'maera/sidebar/secondary', '__return_false' );
 		}

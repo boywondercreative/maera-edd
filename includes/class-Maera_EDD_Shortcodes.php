@@ -104,6 +104,7 @@ class Maera_EDD_Shortcodes {
 
 					if ( 1 == $columns ) {
 						$mode = 'list';
+                        $context['download_classes'] = array( $in_cart, $variable_priced, $column_class, $count_class, $count );
 					} else {
 						$mode = $hover_type;
 						$mode = ( 'edd' == $hover_type ) ? 'grid' : $mode;
@@ -117,7 +118,7 @@ class Maera_EDD_Shortcodes {
             [maera_grid_container_close]
         </div>
 
-    	<nav id="downloads-shortcode" class="download-navigation">
+    	<nav id="downloads-shortcode" class="download-navigation clearfix">
     		<?php
     		$big = 999999;
     		echo paginate_links( array(
@@ -127,7 +128,6 @@ class Maera_EDD_Shortcodes {
     			'total'     => $downloads->max_num_pages,
     			'prev_next' => false,
     			'show_all'  => true,
-                'type'      => 'list'
     		) );
     		?>
     	</nav>
