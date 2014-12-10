@@ -1,6 +1,7 @@
 {#<?php #}
 {% from 'row_open.html.twig' import row_open as row_open %}
-{% from 'row_close.html.twig' import row_open as row_close %}
+{% from 'row_close.html.twig' import row_close as row_close %}
+{% from 'clearfix.html.twig' import clearfix as clearfix %}
 
 {{ row_open('form', '', 'edd-filters-form', 'action="/" method="get"') }}
 
@@ -76,3 +77,4 @@
 	tag_dropdown.onchange = onTagChange;
 	-->
 </script>
+{{ clearfix() }}
