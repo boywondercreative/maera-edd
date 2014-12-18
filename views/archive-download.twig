@@ -1,14 +1,15 @@
-{% extends "base.twig" %}
-
+{% extends "main.twig" %}
 {% block content %}
-
 	<div class="content-wrapper">
 
 		{% include ['filter-'~theme_mods.filter_mode~'.twig', 'filter-php.twig'] %}
 
 		<article {{ function( 'post_class', in_cart, variable_priced, categories, tags ) }} id="tease-{{ post.ID }}" itemscope itemtype="http://schema.org/WebPage">
 
-			{% include 'single-title.twig' %}
+			<header class="entry-header">
+				<title itemprop="name">{{ post.title }}</title>
+				<h1 class="entry-title">{{ post.title|apply_filters( 'maera/title' ) }}</h1>
+			</header>
 
 			{{ shell.clearfix }}
 			{% do action( 'maera/page/pre_content' ) %}

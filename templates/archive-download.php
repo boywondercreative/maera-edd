@@ -10,10 +10,6 @@
 
 global $wp_query;
 
-$templates = array(
-	'archive-download.twig',
-);
-
 $data = Timber::get_context();
 
 $data['title'] = __( 'Downloads', 'maera_edd' );
@@ -48,4 +44,15 @@ if ( $terms && ! is_wp_error( $terms ) ) {
 	$data['tags'] = '';
 }
 
-Timber::render( $templates, $data, apply_filters( 'maera/timber/cache', false ) );
+// Header
+get_header();
+
+// Content
+Timber::render(
+	'archive-download.twig',
+	$data,
+	apply_filters( 'maera/timber/cache', false )
+);
+
+// Footer
+get_footer();
