@@ -10,7 +10,7 @@
 
 global $wp_query;
 
-$data = Timber::get_context();
+$data = Maera_Template::context();
 
 $data['title'] = __( 'Downloads', 'maera_edd' );
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );
@@ -44,15 +44,6 @@ if ( $terms && ! is_wp_error( $terms ) ) {
 	$data['tags'] = '';
 }
 
-// Header
-get_header();
-
-// Content
-Timber::render(
-	'archive-download.twig',
-	$data,
-	apply_filters( 'maera/timber/cache', false )
-);
-
-// Footer
-get_footer();
+Maera_Template::header();
+Maera_Template::main( 'archive-download.twig', $data );
+Maera_Template::footer();
