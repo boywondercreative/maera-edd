@@ -532,7 +532,6 @@ table#edd_checkout_cart {
 .downloads-list.grid .featured-image-wrapper .edd_download_buy_button a {
 	text-align: center;
 	position: relative;
-	top: 40%;
 }
 
 .downloads-list.grid .featured-image-wrapper:hover .edd_download_buy_button {
@@ -770,7 +769,11 @@ form.edd-filters-form select {
 .downloads-list.grid .edd_coming_soon .featured-image-wrapper .edd_download_buy_button {
   opacity: .8;
   background: rgba(255,255,255,.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .downloads-list.grid .edd_coming_soon .featured-image-wrapper:hover .edd_download_buy_button {
   opacity: 1;
 }
