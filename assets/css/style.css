@@ -254,7 +254,6 @@ input[type="submit"].edd-submit:hover,
 input[type="submit"].edd-submit:focus,
 .edd-submit.button:hover,
 .edd-submit.button:focus {
-  color: #333333;
   text-decoration: none;
 }
 
