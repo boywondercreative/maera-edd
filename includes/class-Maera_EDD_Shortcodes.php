@@ -118,7 +118,7 @@ class Maera_EDD_Shortcodes {
             [maera_grid_container_close]
         </div>
 
-        <nav id="downloads-shortcode" class="download-navigation clearfix">
+        <div id="downloads-shortcode" class="download-navigation clearfix">
             <?php
             $big = 999999;
             echo paginate_links( array(
@@ -130,7 +130,7 @@ class Maera_EDD_Shortcodes {
             'show_all'  => true,
             ) );
             ?>
-        </nav>
+        </div>
         <script>jQuery( "ul.page-numbers" ).addClass( "pagination" );</script>
         <?php
 
