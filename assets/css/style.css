@@ -881,3 +881,9 @@ form.edd-filters-form select {
     border-radius: 3px;
     background: #E33100;
 }
+
+.edd_purchase_submit_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
