@@ -523,6 +523,7 @@ table#edd_checkout_cart {
 		height: 101%;
 		transition: all 150ms;
 		text-align: center;
+    cursor: pointer;
 }
 
 .downloads-list.grid .featured-image-wrapper .edd_download_buy_button .edd_download_purchase_form,
