@@ -726,8 +726,9 @@ a.dark-gray:hover, a.dark-gray:focus, a.dark-gray:active { color: #333; }
   line-height: 26px;
 }
 
-.effect-zoe h5 {
+.effect-zoe .title {
   display: inline-block;
+  color: #333;
 }
 
 .effect-zoe:hover img {
@@ -765,6 +766,10 @@ form.edd-filters-form {
 
 form.edd-filters-form select {
   width: 100%;
+}
+
+.downloads-list.list .content.edd_download_buy_button {
+  text-align: center;
 }
 
 .downloads-list.grid .edd_coming_soon .featured-image-wrapper .edd_download_buy_button {
