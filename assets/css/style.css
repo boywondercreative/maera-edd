@@ -890,7 +890,8 @@ form.edd-filters-form select {
     background: #E33100;
 }
 
-.edd_purchase_submit_wrapper {
+.edd_purchase_submit_wrapper,
+.edd_download_buy_button {
   display: flex;
   align-items: center;
   justify-content: center;
