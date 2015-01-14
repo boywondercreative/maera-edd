@@ -896,3 +896,7 @@ form.edd-filters-form select {
   align-items: center;
   justify-content: center;
 }
+
+.sidebar-buy-button .edd_purchase_submit_wrapper {
+  display: block;
+}
