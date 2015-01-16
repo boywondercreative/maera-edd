@@ -175,7 +175,7 @@ class Maera_EDD_Download_Meta extends WP_Widget {
 
                     <?php if ( $appt ) : ?>
                         <tr>
-                            <td><i class="dashicons dashicons-portfolio"></i> <?php _e( 'Software application type:', 'edd-specs' ); ?></td>
+                            <td><i class="dashicons dashicons-portfolio"></i> <?php _e( 'Type:', 'maera_edd' ); ?></td>
                             <td itemprop="applicationCategory"><?php echo $appt; ?></td>
                         </tr>
                     <?php endif; ?>
@@ -205,8 +205,7 @@ class Maera_EDD_Download_Meta extends WP_Widget {
                         <tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                             <td><i class="dashicons dashicons-money"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
                             <td>
-                                <span><?php echo $price; ?></span>
-                                <span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
+                                <span><?php echo $price; ?></span><span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
                             </td>
                         </tr>
 
