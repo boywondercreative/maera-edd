@@ -201,11 +201,11 @@ class Maera_EDD_Download_Meta extends WP_Widget {
                         </tr>
                     <?php endif; ?>
 
-                    <?php if ( $pric ) : ?>
+                    <?php if ( $price ) : ?>
                         <tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                             <td><i class="dashicons dashicons-money"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
                             <td>
-                                <span><?php echo $pric; ?></span>
+                                <span><?php echo $price; ?></span>
                                 <span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
                             </td>
                         </tr>
