@@ -91,8 +91,12 @@ class Maera_EDD_Shortcodes {
                 $context = Maera_Template::context();
                 $context['post']             = new TimberPost( get_the_ID() );
                 $context['columns']          = $columns;
-                $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) ? 'yes' : 'no';
-                $context['display_full']     = $full_content;
+                if ( $excerpt != 'no' && $full_content != 'yes' && has_excerpt() ) {
+                    $context['display_excerpt'] = true;
+                }
+                if ( 'yes' == $full_content ) {
+                    $context['display_full'] = true;
+                }
                 $context['display_buy_btn']  = $buy_button;
                 $context['in_cart']          = $in_cart;
                 $context['variable_priced']  = $variable_priced;

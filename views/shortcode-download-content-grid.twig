@@ -30,9 +30,10 @@
 		{# The title of the download #}
 		<h4 class="grid-download-title"><a title="{{ __( 'View', 'maera_edd' ) }} {{ post.title }}" href="{{ post.link }}">{{ post.title }}</a></h4>
 		{# Excerpt and Content #}
-		{% if display_excerpt == 'yes' %}
+		{% if display_excerpt %}
 			{{ post.get_preview(20|apply_filters(excerpt_length)) }}
-		{% elseif display_full == 'yes' %}
+		{% endif %}
+		{% if display_full %}
 			{{ post.content }}
 		{% endif %}
 	</div>
