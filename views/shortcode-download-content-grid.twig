@@ -32,8 +32,7 @@
 		{# Excerpt and Content #}
 		{% if display_excerpt %}
 			{{ post.get_preview(20|apply_filters(excerpt_length)) }}
-		{% endif %}
-		{% if display_full %}
+		{% elseif display_full %}
 			{{ post.content }}
 		{% endif %}
 	</div>
