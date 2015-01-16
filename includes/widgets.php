@@ -112,114 +112,116 @@ class Maera_EDD_Download_Meta extends WP_Widget {
 
         echo edd_get_purchase_link( $button_args ); ?>
 
-        <table class="table table-striped table-bordered" style="margin-top: 2em;">
-            <?php
-            // Number of Downloads
-            ?>
-            <tr>
-                <td><i class="dashicons dashicons-chart-area"></i> <?php _e( 'Downloads', 'maera_edd' ); ?></td>
-                <td><?php echo edd_get_download_sales_stats( $post->ID ); ?></td>
-            </tr>
+        <?php if ( ! get_post_meta( $post->ID, 'edd_coming_soon', true ) ) : ?>
 
-            <?php if ( !class_exists( 'EDD_Software_Specs' ) ) : ?>
+            <table class="table table-striped table-bordered" style="margin-top: 2em;">
                 <?php
-                // Created Date
+                // Number of Downloads
                 ?>
                 <tr>
-                    <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Created', 'maera_edd' ); ?></td>
-                    <td><?php echo get_the_date(); ?></td>
+                    <td><i class="dashicons dashicons-chart-area"></i> <?php _e( 'Downloads', 'maera_edd' ); ?></td>
+                    <td><?php echo edd_get_download_sales_stats( $post->ID ); ?></td>
                 </tr>
+
+                <?php if ( !class_exists( 'EDD_Software_Specs' ) ) : ?>
+                    <?php
+                    // Created Date
+                    ?>
+                    <tr>
+                        <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Created', 'maera_edd' ); ?></td>
+                        <td><?php echo get_the_date(); ?></td>
+                    </tr>
+
+                    <?php
+                    // Updated Date
+                    ?>
+                    <?php if ( get_the_date() != get_the_modified_date() ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Last Modified', 'maera_edd' ); ?></td>
+                            <td><?php echo get_the_modified_date(); ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endif; ?>
 
                 <?php
-                // Updated Date
+                // Software Specs
                 ?>
-                <?php if ( get_the_date() != get_the_modified_date() ) : ?>
+                <?php if ( class_exists( 'EDD_Software_Specs' ) ) :
+                    $isa_curr = empty($pc) ? 'USD' : $pc;
+                    $eddchangelog_version = get_post_meta( $post->ID, '_edd_sl_version', TRUE );
+
+                    if ( empty( $eddchangelog_version ) )
+                    $vKey = '_smartest_currentversion';
+                    else
+                    $vKey = '_edd_sl_version';
+
+
+                    $sVersion = get_post_meta($post->ID, $vKey, true);
+                    $appt = get_post_meta($post->ID, '_smartest_apptype', true);
+                    $filt = get_post_meta($post->ID, '_smartest_filetype', true);
+                    $fils = get_post_meta($post->ID, '_smartest_filesize', true);
+                    $reqs = get_post_meta($post->ID, '_smartest_requirements', true);
+                    ?>
+
                     <tr>
-                        <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Last Modified', 'maera_edd' ); ?></td>
-                        <td><?php echo get_the_modified_date(); ?></td>
-                    </tr>
-                <?php endif; ?>
-            <?php endif; ?>
-
-            <?php
-            // Software Specs
-            ?>
-            <?php if ( class_exists( 'EDD_Software_Specs' ) ) :
-                $isa_curr = empty($pc) ? 'USD' : $pc;
-                $eddchangelog_version = get_post_meta( $post->ID, '_edd_sl_version', TRUE );
-
-                if ( empty( $eddchangelog_version ) )
-                $vKey = '_smartest_currentversion';
-                else
-                $vKey = '_edd_sl_version';
-
-
-                $sVersion = get_post_meta($post->ID, $vKey, true);
-                $appt = get_post_meta($post->ID, '_smartest_apptype', true);
-                $filt = get_post_meta($post->ID, '_smartest_filetype', true);
-                $fils = get_post_meta($post->ID, '_smartest_filesize', true);
-                $reqs = get_post_meta($post->ID, '_smartest_requirements', true);
-                ?>
-
-                <tr>
-                    <td><i class="dashicons dashicons-calendar-alt"></i> <?php _e( 'Release date:', 'edd-specs' ); ?></td>
-                    <td>
-                        <meta itemprop="datePublished" content="<?php echo get_post_time('Y-m-d', false, $post->ID); ?>">
-                        <?php echo get_post_time('F j, Y', false, $post->ID, true); ?>
-                    </td>
-                </tr>
-
-                <?php if ( $sVersion ) : ?>
-                    <tr>
-                        <td><i class="dashicons dashicons-flag"></i> <?php _e( 'Current version:', 'edd-specs' ); ?></td>
-                        <td itemprop="softwareVersion"><?php echo $sVersion; ?></td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ( $appt ) : ?>
-                    <tr>
-                        <td><i class="dashicons dashicons-portfolio"></i> <?php _e( 'Software application type:', 'edd-specs' ); ?></td>
-                        <td itemprop="applicationCategory"><?php echo $appt; ?></td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ( $filt ) : ?>
-                    <tr>
-                        <td><i class="dashicons dashicons-media-default"></i> <?php _e( 'File format:', 'edd-specs' ); ?></td>
-                        <td itemprop="fileFormat"><?php echo $filt; ?></td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ( $fils ) : ?>
-                    <tr>
-                        <td><i class="dashicons dashicons-admin-generic"></i> <?php _e( 'File size:', 'edd-specs' ); ?></td>
-                        <td itemprop="fileSize"><?php echo $fils; ?></td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ( $reqs ) : ?>
-                    <tr>
-                        <td><i class="dashicons dashicons-editor-ol"></i> <?php _e( 'Requirements:', 'edd-specs' ); ?></td>
-                        <td itemprop="requirements"><?php echo $reqs; ?></td>
-                    </tr>
-                <?php endif; ?>
-
-                <?php if ( $pric ) : ?>
-                    <tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <td><i class="dashicons dashicons-money"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-calendar-alt"></i> <?php _e( 'Release date:', 'edd-specs' ); ?></td>
                         <td>
-                            <span><?php echo $pric; ?></span>
-                            <span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
+                            <meta itemprop="datePublished" content="<?php echo get_post_time('Y-m-d', false, $post->ID); ?>">
+                            <?php echo get_post_time('F j, Y', false, $post->ID, true); ?>
                         </td>
                     </tr>
 
-                    <?php do_action( 'eddss_add_specs_table_row' ); ?>
+                    <?php if ( $sVersion ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-flag"></i> <?php _e( 'Current version:', 'edd-specs' ); ?></td>
+                            <td itemprop="softwareVersion"><?php echo $sVersion; ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                    <?php if ( $appt ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-portfolio"></i> <?php _e( 'Software application type:', 'edd-specs' ); ?></td>
+                            <td itemprop="applicationCategory"><?php echo $appt; ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                    <?php if ( $filt ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-media-default"></i> <?php _e( 'File format:', 'edd-specs' ); ?></td>
+                            <td itemprop="fileFormat"><?php echo $filt; ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                    <?php if ( $fils ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-admin-generic"></i> <?php _e( 'File size:', 'edd-specs' ); ?></td>
+                            <td itemprop="fileSize"><?php echo $fils; ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                    <?php if ( $reqs ) : ?>
+                        <tr>
+                            <td><i class="dashicons dashicons-editor-ol"></i> <?php _e( 'Requirements:', 'edd-specs' ); ?></td>
+                            <td itemprop="requirements"><?php echo $reqs; ?></td>
+                        </tr>
+                    <?php endif; ?>
+
+                    <?php if ( $pric ) : ?>
+                        <tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <td><i class="dashicons dashicons-money"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
+                            <td>
+                                <span><?php echo $pric; ?></span>
+                                <span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
+                            </td>
+                        </tr>
+
+                        <?php do_action( 'eddss_add_specs_table_row' ); ?>
+                    <?php endif; ?>
+
                 <?php endif; ?>
 
-            <?php endif; ?>
-
-        </table>
-        <?php
+            </table>
+        <?php endif;
         echo $after_widget;
         $cache[$args['widget_id']] = ob_get_flush();
         wp_cache_set( 'widget_maera_edd', $cache, 'widget' );
