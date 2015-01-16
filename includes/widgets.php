@@ -104,6 +104,10 @@ class Maera_EDD_Download_Meta extends WP_Widget {
 
         }
 
+        if ( has_post_thumbnail( $post->ID ) ) {
+            the_post_thumbnail();
+        }
+
         echo '<h3 style="text-align: center">' . $price . '</h3>';
 
         echo edd_get_purchase_link( $button_args ); ?>
