@@ -113,13 +113,8 @@ class Maera_EDD_Download_Meta extends WP_Widget {
             // Number of Downloads
             ?>
             <tr>
-                <td><i class="el-icon-shopping-cart"></i> <?php _e( 'Downloads', 'maera_edd' ); ?></td>
+                <td><i class="dashicons dashicons-chart-area"></i> <?php _e( 'Downloads', 'maera_edd' ); ?></td>
                 <td><?php echo edd_get_download_sales_stats( $post->ID ); ?></td>
-            </tr>
-
-            <tr>
-                <td><i class="el-icon-user"></i> <?php _e( 'Author', 'maera_edd' ); ?></td>
-                <td><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author_meta( 'display_name' ); ?></a></td>
             </tr>
 
             <?php if ( !class_exists( 'EDD_Software_Specs' ) ) : ?>
@@ -127,7 +122,7 @@ class Maera_EDD_Download_Meta extends WP_Widget {
                 // Created Date
                 ?>
                 <tr>
-                    <td><i class="el-icon-calendar-sign"></i> <?php _e( 'Created', 'maera_edd' ); ?></td>
+                    <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Created', 'maera_edd' ); ?></td>
                     <td><?php echo get_the_date(); ?></td>
                 </tr>
 
@@ -136,7 +131,7 @@ class Maera_EDD_Download_Meta extends WP_Widget {
                 ?>
                 <?php if ( get_the_date() != get_the_modified_date() ) : ?>
                     <tr>
-                        <td><i class="el-icon-calendar-sign"></i> <?php _e( 'Last Modified', 'maera_edd' ); ?></td>
+                        <td><i class="dashicons dashicons-calendar"></i> <?php _e( 'Last Modified', 'maera_edd' ); ?></td>
                         <td><?php echo get_the_modified_date(); ?></td>
                     </tr>
                 <?php endif; ?>
@@ -160,61 +155,54 @@ class Maera_EDD_Download_Meta extends WP_Widget {
                 $filt = get_post_meta($post->ID, '_smartest_filetype', true);
                 $fils = get_post_meta($post->ID, '_smartest_filesize', true);
                 $reqs = get_post_meta($post->ID, '_smartest_requirements', true);
-
-                $moddate = ($dm) ? date('Y-m-d', $dm) : '';$moddatenice = ($dm) ? date('F j, Y', $dm) : '';
                 ?>
 
                 <tr>
-                    <td><i class="el-icon-calendar-sign"></i> <?php _e( 'Release date:', 'edd-specs' ); ?></td>
+                    <td><i class="dashicons dashicons-calendar-alt"></i> <?php _e( 'Release date:', 'edd-specs' ); ?></td>
                     <td>
                         <meta itemprop="datePublished" content="<?php echo get_post_time('Y-m-d', false, $post->ID); ?>">
                         <?php echo get_post_time('F j, Y', false, $post->ID, true); ?>
                     </td>
                 </tr>
 
-                <tr>
-                    <td><i class="el-icon-calendar-sign"></i> <?php _e( 'Last updated:', 'edd-specs' ); ?></td>
-                    <td><meta itemprop="dateModified" content="<?php echo $moddate; ?>"><?php echo $moddatenice; ?></td>
-                </tr>
-
                 <?php if ( $sVersion ) : ?>
                     <tr>
-                        <td><i class="el-icon-laptop"></i> <?php _e( 'Current version:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-flag"></i> <?php _e( 'Current version:', 'edd-specs' ); ?></td>
                         <td itemprop="softwareVersion"><?php echo $sVersion; ?></td>
                     </tr>
                 <?php endif; ?>
 
                 <?php if ( $appt ) : ?>
                     <tr>
-                        <td><i class="el-icon-laptop"></i> <?php _e( 'Software application type:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-portfolio"></i> <?php _e( 'Software application type:', 'edd-specs' ); ?></td>
                         <td itemprop="applicationCategory"><?php echo $appt; ?></td>
                     </tr>
                 <?php endif; ?>
 
                 <?php if ( $filt ) : ?>
                     <tr>
-                        <td><i class="el-icon-file"></i> <?php _e( 'File format:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-media-default"></i> <?php _e( 'File format:', 'edd-specs' ); ?></td>
                         <td itemprop="fileFormat"><?php echo $filt; ?></td>
                     </tr>
                 <?php endif; ?>
 
                 <?php if ( $fils ) : ?>
                     <tr>
-                        <td><i class="el-icon-file"></i> <?php _e( 'File size:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-admin-generic"></i> <?php _e( 'File size:', 'edd-specs' ); ?></td>
                         <td itemprop="fileSize"><?php echo $fils; ?></td>
                     </tr>
                 <?php endif; ?>
 
                 <?php if ( $reqs ) : ?>
                     <tr>
-                        <td><i class="el-icon-tasks"></i> <?php _e( 'Requirements:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-editor-ol"></i> <?php _e( 'Requirements:', 'edd-specs' ); ?></td>
                         <td itemprop="requirements"><?php echo $reqs; ?></td>
                     </tr>
                 <?php endif; ?>
 
                 <?php if ( $pric ) : ?>
                     <tr itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                        <td><i class="el-icon-credit-card"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
+                        <td><i class="dashicons dashicons-money"></i> <?php _e( 'Price:', 'edd-specs' ); ?></td>
                         <td>
                             <span><?php echo $pric; ?></span>
                             <span itemprop="priceCurrency"><?php echo $isa_curr; ?></span>
@@ -263,3 +251,7 @@ function maera_edd_register_widgets() {
     register_widget( 'Maera_EDD_Download_Meta' );
 }
 add_action( 'widgets_init', 'maera_edd_register_widgets' );
+
+// Remove the default EDD Software Specs output from the bottom of the download.
+$EDD_Software_Specs = EDD_Software_Specs::get_instance();
+remove_action( 'edd_after_download_content', array( $EDD_Software_Specs, 'specs' ), 30 );
