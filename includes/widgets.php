@@ -253,5 +253,7 @@ function maera_edd_register_widgets() {
 add_action( 'widgets_init', 'maera_edd_register_widgets' );
 
 // Remove the default EDD Software Specs output from the bottom of the download.
-$EDD_Software_Specs = EDD_Software_Specs::get_instance();
-remove_action( 'edd_after_download_content', array( $EDD_Software_Specs, 'specs' ), 30 );
+if ( class_exists( 'EDD_Software_Specs' ) ) {
+    $EDD_Software_Specs = EDD_Software_Specs::get_instance();
+    remove_action( 'edd_after_download_content', array( $EDD_Software_Specs, 'specs' ), 30 );
+}
