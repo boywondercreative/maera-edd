@@ -5,7 +5,8 @@ Plugin URI:
 Description:         Add support for Easy Digital Downloads to the Maera Framework
 Version:             1.0-dev
 Author:              Aristeides Stathopoulos, Dimitris Kalliris
-Author URI:          http://press.codes
+Author URI:          https://press.codes
+Text Domain:         maera_edd
 */
 
 

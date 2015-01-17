@@ -1,0 +1,216 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Maera EDD\n"
+"POT-Creation-Date: 2015-01-18 01:14+0200\n"
+"PO-Revision-Date: 2015-01-18 01:14+0200\n"
+"Last-Translator: Stathopoulos Aristeides <info@aristeides.com>\n"
+"Language-Team: Stathopoulos Aristeides <info@aristeides.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-Maera_EDD_Customizer.php:24
+msgid "Easy Digital Downloads"
+msgstr "Easy Digital Downloads"
+
+#: includes/class-Maera_EDD_Customizer.php:39
+msgid "Button color"
+msgstr "Button color"
+
+#: includes/class-Maera_EDD_Customizer.php:40
+msgid "Select the button color for the purchase/buynow button."
+msgstr "Select the button color for the purchase/buynow button."
+
+#: includes/class-Maera_EDD_Customizer.php:40
+#: includes/class-Maera_EDD_Customizer.php:86
+msgid ""
+"Please note that this change will be applied after you save the options and "
+"refresh (no live-preview available)."
+msgstr ""
+"Please note that this change will be applied after you save the options and "
+"refresh (no live-preview available)."
+
+#: includes/class-Maera_EDD_Customizer.php:45
+msgid "White"
+msgstr "White"
+
+#: includes/class-Maera_EDD_Customizer.php:46
+msgid "Gray"
+msgstr "Gray"
+
+#: includes/class-Maera_EDD_Customizer.php:47
+msgid "Blue"
+msgstr "Blue"
+
+#: includes/class-Maera_EDD_Customizer.php:48
+msgid "Red"
+msgstr "Red"
+
+#: includes/class-Maera_EDD_Customizer.php:49
+msgid "Green"
+msgstr "Green"
+
+#: includes/class-Maera_EDD_Customizer.php:50
+msgid "Yellow"
+msgstr "Yellow"
+
+#: includes/class-Maera_EDD_Customizer.php:51
+msgid "Orange"
+msgstr "Orange"
+
+#: includes/class-Maera_EDD_Customizer.php:52
+msgid "Dark Gray"
+msgstr "Dark Gray"
+
+#: includes/class-Maera_EDD_Customizer.php:60
+msgid "Hover Type"
+msgstr "Hover Type"
+
+#: includes/class-Maera_EDD_Customizer.php:61
+msgid "Select the hover type for the grid display."
+msgstr "Select the hover type for the grid display."
+
+#: includes/class-Maera_EDD_Customizer.php:66
+msgid "EDD style"
+msgstr "EDD style"
+
+#: includes/class-Maera_EDD_Customizer.php:67
+msgid "Zoe"
+msgstr "Zoe"
+
+#: includes/class-Maera_EDD_Customizer.php:75
+msgid "Replace variables radio select with a dropdown"
+msgstr "Replace variables radio select with a dropdown"
+
+#: includes/class-Maera_EDD_Customizer.php:85
+msgid "Downloads filter mode"
+msgstr "Downloads filter mode"
+
+#: includes/class-Maera_EDD_Customizer.php:91
+msgid "Isotope"
+msgstr "Isotope"
+
+#: includes/class-Maera_EDD_Customizer.php:92
+msgid "PHP"
+msgstr "PHP"
+
+#: includes/widgets.php:7
+msgid "Maera-EDD Buy Button"
+msgstr "Maera-EDD Buy Button"
+
+#: includes/widgets.php:7
+msgid "Display the buy button on single downloads."
+msgstr "Display the buy button on single downloads."
+
+#: includes/widgets.php:33
+msgid "Use this widget to add meta details for single products"
+msgstr "Use this widget to add meta details for single products"
+
+#: includes/widgets.php:36
+msgid "Maera EDD: Download meta"
+msgstr "Maera EDD: Download meta"
+
+#: includes/widgets.php:67
+msgid "Product Details"
+msgstr "Product Details"
+
+#: includes/widgets.php:97
+msgid "From "
+msgstr "From "
+
+#: includes/widgets.php:117 templates/archive-download.php:15
+msgid "Downloads"
+msgstr "Downloads"
+
+#: includes/widgets.php:126
+msgid "Created"
+msgstr "Created"
+
+#: includes/widgets.php:135
+msgid "Last Modified"
+msgstr "Last Modified"
+
+#: includes/widgets.php:162
+msgid "Release date:"
+msgstr "Release date:"
+
+#: includes/widgets.php:171
+msgid "Current version:"
+msgstr "Current version:"
+
+#: includes/widgets.php:178
+msgid "Type:"
+msgstr "Type:"
+
+#: includes/widgets.php:185
+msgid "File format:"
+msgstr "File format:"
+
+#: includes/widgets.php:192
+msgid "File size:"
+msgstr "File size:"
+
+#: includes/widgets.php:199
+msgid "Requirements:"
+msgstr "Requirements:"
+
+#: includes/widgets.php:206
+msgid "Price:"
+msgstr "Price:"
+
+#: templates/widget-cart-checkout.php:2
+msgid "Subtotal:"
+msgstr "Subtotal:"
+
+#: templates/widget-cart-checkout.php:3
+msgid "Checkout"
+msgstr "Checkout"
+
+#: templates/widget-cart-item.php:4
+msgid "remove"
+msgstr "remove"
+
+#: views/filter-isotope.twig:9 views/filter-php.twig:11
+#: views/filter-php.twig:26
+msgid "All"
+msgstr "All"
+
+#: views/filter-isotope.twig:28
+msgid "Sort by:"
+msgstr "Sort by:"
+
+#: views/filter-isotope.twig:29
+msgid "Default"
+msgstr "Default"
+
+#: views/filter-isotope.twig:30 views/filter-isotope.twig:31
+msgid "Title"
+msgstr "Title"
+
+#: views/filter-php.twig:9
+msgid "Choose a category"
+msgstr "Choose a category"
+
+#: views/filter-php.twig:24
+msgid "Choose a tag"
+msgstr "Choose a tag"
+
+#: views/shortcode-download-content-grid.twig:13
+#: views/shortcode-download-content-list.twig:35
+#: views/shortcode-download-content-zoe.twig:15
+msgid "Coming Soon"
+msgstr "Coming Soon"
+
+#: views/shortcode-download-content-grid.twig:17
+#: views/shortcode-download-content-list.twig:39
+msgid "Details"
+msgstr "Details"
