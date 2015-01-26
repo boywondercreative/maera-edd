@@ -10,7 +10,7 @@
 
 global $wp_query;
 
-$data = Maera_Template::context();
+$data = Maera()->template->context();
 
 $data['title'] = __( 'Downloads', 'maera_edd' );
 $data['posts'] = Timber::query_posts( false, 'TimberPost' );
@@ -44,6 +44,6 @@ if ( $terms && ! is_wp_error( $terms ) ) {
 	$data['tags'] = '';
 }
 
-Maera_Template::header();
-Maera_Template::main( 'archive-download.twig', $data );
-Maera_Template::footer();
+Maera()->template->header();
+Maera()->template->main( 'archive-download.twig', $data );
+Maera()->template->footer();

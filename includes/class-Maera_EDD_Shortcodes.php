@@ -88,7 +88,7 @@ class Maera_EDD_Shortcodes {
                 $hover_type      = get_theme_mod( 'hover_type', 'edd' );
                 $effect          = 'effect-' . $hover_type;
 
-                $context = Maera_Template::context();
+                $context = Maera()->template->context();
                 $context['post']             = new TimberPost( get_the_ID() );
                 $context['columns']          = $columns;
                 $context['display_excerpt']  = ( $excerpt != 'no' && $full_content != 'yes' ) ? true : false;
@@ -109,7 +109,7 @@ class Maera_EDD_Shortcodes {
                     $mode = $hover_type;
                     $mode = ( 'edd' == $hover_type ) ? 'grid' : $mode;
                 }
-                Maera_Template::main( 'shortcode-download-content-' . $mode . '.twig', $context );
+                Maera()->template->main( 'shortcode-download-content-' . $mode . '.twig', $context );
 
                 endwhile;
 
