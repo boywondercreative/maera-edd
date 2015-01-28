@@ -3,7 +3,7 @@
 Plugin Name:         Maera EDD
 Plugin URI:
 Description:         Add support for Easy Digital Downloads to the Maera Framework
-Version:             0.9.0
+Version:             0.9.1
 Author:              Aristeides Stathopoulos, Dimitris Kalliris
 Author URI:          https://press.codes
 Text Domain:         maera_edd
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MAERA_EDD_VER', '0.9.0' );
+define( 'MAERA_EDD_VER', '0.9.1' );
 
 /**
  * The main Maera_EDD class
